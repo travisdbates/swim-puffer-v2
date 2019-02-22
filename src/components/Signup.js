@@ -1,6 +1,6 @@
-import React,  { Component } from 'react';
+import React, { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -11,16 +11,23 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import DoneIcon from '@material-ui/icons/Done';
+import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
 import Fade from '@material-ui/core/Fade';
 import Back from './common/Back';
+import InputLabel from '@material-ui/core/InputLabel';
 
 const backgroundShape = require('../images/shape.svg');
 
@@ -34,7 +41,7 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.secondary['A100'],
     overflow: 'hidden',
-    background: `url(${backgroundShape}) no-repeat`,
+    //background: `url(${backgroundShape}) no-repeat`,
     backgroundSize: 'cover',
     backgroundPosition: '0 400px',
     marginTop: 10,
@@ -45,7 +52,7 @@ const styles = theme => ({
     margin: `0 ${theme.spacing.unit * 2}px`
   },
   smallContainer: {
-    width: '60%'
+    width: '100%'
   },
   bigContainer: {
     width: '80%'
@@ -72,7 +79,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.primary['A100']
   },
   backButton: {
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing.unit
   },
   outlinedButtom: {
     textTransform: 'uppercase',
@@ -96,53 +103,160 @@ const styles = theme => ({
     width: '100%'
   },
   selectEmpty: {
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit * 2
   }
-})
+});
 
 const getSteps = () => {
-  return [
-    'User',
-    'Signin',
-    'Permission'
-  ];
-}
+  return ['Add Child', 'Select Session(s)', 'Select Time(s)', 'Add Notes'];
+};
 
 class Signup extends Component {
-
   state = {
     activeStep: 0,
-    receivingAccount: '',
+    age: '',
     termsChecked: false,
-    loading: true
-  }
+    loading: true,
+    childName: '',
+    session_1: false,
+    session_2: false,
+    session_3: false,
+    session_4: false,
+    session_5: false,
+    session_6: false,
+    sessionTime1: false,
+    sessionTime2: false,
+    sessionTime3: false,
+    sessionTime4: false,
+    sessionTime5: false,
+    sessionTime6: false,
+    sessionNotes1: '',
+    sessionNotes2: '',
+    sessionNotes3: '',
+    sessionNotes4: '',
+    sessionNotes5: '',
+    sessionNotes6: ''
+  };
 
-  componentDidMount() {
-    
-  }
+  componentDidMount() {}
+
+  isSessionSelected = () => {
+    const {
+      session_1,
+      session_2,
+      session_3,
+      session_4,
+      session_5,
+      session_6
+    } = this.state;
+    return (
+      !session_1 &&
+      !session_2 &&
+      !session_3 &&
+      !session_4 &&
+      !session_5 &&
+      !session_6
+    );
+  };
+
+  isSessionTimeSelected = () => {
+    const {
+      sessionTime1,
+      sessionTime2,
+      sessionTime3,
+      sessionTime4,
+      sessionTime5,
+      sessionTime6
+    } = this.state;
+    return (
+      !sessionTime1 &&
+      !sessionTime2 &&
+      !sessionTime3 &&
+      !sessionTime4 &&
+      !sessionTime5 &&
+      !sessionTime6
+    );
+  };
+
+  timeSelectFields = () => {
+    const {
+      session_1,
+      session_2,
+      session_3,
+      session_4,
+      session_5,
+      session_6
+    } = this.state;
+    let sessions = {
+      session_1,
+      session_2,
+      session_3,
+      session_4,
+      session_5,
+      session_6
+    };
+
+    let sessionTimes = [];
+
+    for (var prop in sessions) {
+      sessions[prop] && sessionTimes.push(prop);
+    }
+    return sessionTimes;
+  };
+
+  renderSessionTime = () => {
+    return <div>Session</div>;
+  };
+
+  isNextDisabled = activeStep => {
+    return activeStep === 0
+      ? !this.state.age || !this.state.childName
+      : activeStep === 1
+      ? this.isSessionSelected()
+      : activeStep === 2
+      ? this.areTimesSelected()
+      : false;
+  };
+
+  areTimesSelected = () => {
+    let times = this.timeSelectFields();
+    let flag = false;
+    times.map(time => {
+      console.log(
+        time.split('_').join('Time'),
+        this.state[time.split('_').join('Time')]
+      );
+      if (!this.state[time.split('_').join('Time')]) {
+        console.log('In here');
+        flag = true;
+      }
+    });
+    return flag;
+  };
 
   handleNext = () => {
     this.setState(state => ({
-      activeStep: state.activeStep + 1,
+      activeStep: state.activeStep + 1
     }));
-    if(this.state.activeStep === 2) {
-      setTimeout(() => this.props.history.push('/dashboard'), 5000)
+    if (this.state.activeStep === 3) {
+      setTimeout(() => this.props.history.push('/dash'), 5000);
     }
   };
 
   handleBack = () => {
     this.setState(state => ({
-      activeStep: state.activeStep - 1,
+      activeStep: state.activeStep - 1
     }));
   };
 
   handleReset = () => {
     this.setState({
-      activeStep: 0,
+      activeStep: 0
     });
   };
 
   handleChange = event => {
+    console.log(event.target.name, event.target.value);
     this.setState({ [event.target.name]: event.target.value });
   };
 
@@ -150,39 +264,59 @@ class Signup extends Component {
     this.setState({ termsChecked: event.target.checked });
   };
 
+  handleChangeCheckbox = name => event => {
+    this.setState({ [name]: event.target.checked });
+  };
+
   stepActions() {
-    if(this.state.activeStep === 0) {
-      return 'Sign in';
+    if (this.state.activeStep === 0) {
+      return 'Add Child';
     }
-    if(this.state.activeStep === 1) {
-      return 'Next';
+    if (this.state.activeStep === 1) {
+      return 'Confirm Sessions';
     }
-    if(this.state.activeStep === 2) {
-      return 'Accept';
+    if (this.state.activeStep === 2) {
+      return 'Confirm Times';
     }
-    return 'Next';
+    return 'Submit!';
   }
 
   render() {
-
     const { classes } = this.props;
     const steps = getSteps();
-    const { activeStep, loading } = this.state;
+    const {
+      activeStep,
+      loading,
+      session_1,
+      session_2,
+      session_3,
+      session_4,
+      session_5,
+      session_6
+    } = this.state;
 
     return (
       <React.Fragment>
         <CssBaseline />
         <div className={classes.root}>
           <Back />
-          <Grid container justify="center"> 
-            <Grid spacing={24} alignItems="center" justify="center" container className={classes.grid}>
+          <Grid container justify="center">
+            <Grid
+              spacing={24}
+              alignItems="center"
+              justify="center"
+              container
+              className={classes.grid}>
               <Grid item xs={12}>
                 <div className={classes.logo}>
                   <img width={100} height={100} src={logo} />
                 </div>
                 <div className={classes.stepContainer}>
                   <div className={classes.stepGrid}>
-                    <Stepper classes={{root: classes.stepper}} activeStep={activeStep} alternativeLabel>
+                    <Stepper
+                      classes={{ root: classes.stepper }}
+                      activeStep={activeStep}
+                      alternativeLabel>
                       {steps.map(label => {
                         return (
                           <Step key={label}>
@@ -192,170 +326,397 @@ class Signup extends Component {
                       })}
                     </Stepper>
                   </div>
-                  { activeStep === 0 && (
-                  <div className={classes.smallContainer}>
-                    <Paper className={classes.paper}>
-                      <div>
-                        <div style={{marginBottom: 32}}>
-                          <Typography variant="subtitle1" style={{fontWeight: 'bold'}} gutterBottom>
-                            Select
-                          </Typography>
-                          <Typography variant="body2" gutterBottom>
-                            A item to select
-                          </Typography>
-                        </div>
+                  {activeStep === 0 && (
+                    <div className={classes.smallContainer}>
+                      <Paper className={classes.paper}>
                         <div>
-                          <Typography style={{textTransform: 'uppercase', marginBottom: 20}} color='secondary' gutterBottom>
-                            First options
-                          </Typography>
-                          <FormControl variant="outlined" className={classes.formControl}>
-                            <Select
-                              value={this.state.receivingAccount}
-                              onChange={this.handleChange}
-                              input={
-                                <OutlinedInput
-                                  labelWidth={this.state.labelWidth}
-                                  name="receivingAccount"
-                                />
-                              }
-                            >
-                              <MenuItem value="">
-                                <em>Select some option</em>
-                              </MenuItem>
-                              <MenuItem value={'first'}>Option 1</MenuItem>
-                              <MenuItem value={'second'}>Other option</MenuItem>
-                            </Select>
-                          </FormControl>
-                        </div>
-                      </div>
-                    </Paper>
-                    </div>
-                  )}
-                  { activeStep === 1 && (
-                  <div className={classes.smallContainer}>
-                    <Paper className={classes.paper}>
-                      <Grid item container xs={12}>
-                        <Grid item xs={12}>
-                          <Typography variant="subtitle1" gutterBottom>
-                            Sign & confirm
-                          </Typography>
-                          <Typography variant="body2" gutterBottom>
-                            Sign and confirm loan agreement
-                          </Typography>
-                          <Typography variant="bod1" gutterBottom>
-                            One text to explain that
-                          </Typography>
-                        </Grid>
-                      </Grid>
-                    </Paper>
-                    </div>
-                  )}
-                  { activeStep === 2 && (
-                  <div className={classes.smallContainer}>
-                    <Paper className={classes.paper}>
-                      <div>
-                        <div style={{marginBottom: 32}}>
-                          <Typography variant="subtitle1" gutterBottom>
-                            Permissions
-                          </Typography>
-                          <Typography variant="body2" gutterBottom>
-                            We need some permissions to proceed.
-                          </Typography>
-                        </div>
-                        <div>
-                          <Typography color='secondary' gutterBottom>
-                            Accounts
-                          </Typography>
-                          <List component="nav">
-                            <ListItem>
-                              <ListItemIcon>
-                                <DoneIcon />
-                              </ListItemIcon>
-                              <ListItemText inset primary="0297 00988200918" />
-                            </ListItem>
-                            <ListItem>
-                              <ListItemIcon>
-                                <DoneIcon />
-                              </ListItemIcon>
-                              <ListItemText inset primary="0297 00988200920" />
-                            </ListItem>
-                          </List>
-                        </div>
-                      </div>
-                    </Paper>
-                    </div>
-                  )}
-                  { activeStep === 3 && (
-                  <div className={classes.bigContainer}>
-                    <Paper className={classes.paper}>
-                      <div style={{display: 'flex', justifyContent: 'center'}}>
-                        <div style={{width: 380, textAlign: 'center'}}>
-                          <div style={{marginBottom: 32}}>
-                            <Typography variant="h6" style={{fontWeight: 'bold'}} gutterBottom>
-                              Collecting your data
+                          <div style={{ marginBottom: 32 }}>
+                            <Typography
+                              variant="subtitle1"
+                              style={{ fontWeight: 'bold' }}
+                              gutterBottom>
+                              Child Name
                             </Typography>
                             <Typography variant="body2" gutterBottom>
-                              We are processing your request
+                              Please type in your child's name and age
                             </Typography>
                           </div>
-                          <div>
-                            <Fade
-                              in={loading}
-                              style={{
-                                transitionDelay: loading ? '800ms' : '0ms',
-                              }}
-                              unmountOnExit
-                            >
-                              <CircularProgress style={{marginBottom: 32, width: 100, height: 100}} />
-                            </Fade>
+                          <div style={{ display: 'flex' }}>
+                            <div style={{ flex: 1, padding: '5px' }}>
+                              <Typography
+                                style={{
+                                  textTransform: 'uppercase',
+                                  marginBottom: 20
+                                }}
+                                color="secondary"
+                                gutterBottom>
+                                Name
+                              </Typography>
+                              <FormControl
+                                variant="outlined"
+                                className={classes.formControl}>
+                                <TextField
+                                  value={this.state.childName}
+                                  onChange={e =>
+                                    this.setState({ childName: e.target.value })
+                                  }
+                                />
+                              </FormControl>
+                            </div>
+                            <div style={{ flex: 1, padding: '5px' }}>
+                              <Typography
+                                style={{
+                                  textTransform: 'uppercase'
+                                  // marginBottom: 20
+                                }}
+                                color="secondary"
+                                gutterBottom>
+                                Age
+                              </Typography>
+                              <FormControl
+                                variant="outlined"
+                                className={classes.formControl}>
+                                <Select
+                                  value={this.state.age}
+                                  onChange={this.handleChange}
+                                  input={
+                                    <OutlinedInput
+                                      labelWidth={this.state.labelWidth}
+                                      name="age"
+                                    />
+                                  }>
+                                  <MenuItem value="">
+                                    <em>Select an option</em>
+                                  </MenuItem>
+                                  <MenuItem value={1}>1</MenuItem>
+                                  <MenuItem value={1.5}>18 months</MenuItem>
+                                  <MenuItem value={2}>2</MenuItem>
+                                  <MenuItem value={3}>3</MenuItem>
+                                  <MenuItem value={4}>4</MenuItem>
+                                  <MenuItem value={5}>5</MenuItem>
+                                  <MenuItem value={6}>6</MenuItem>
+                                  <MenuItem value={7}>7</MenuItem>
+                                  <MenuItem value={8}>8</MenuItem>
+                                  <MenuItem value={9}>9</MenuItem>
+                                  <MenuItem value={10}>10</MenuItem>
+                                  <MenuItem value={11}>11</MenuItem>
+                                  <MenuItem value={12}>12</MenuItem>
+                                  <MenuItem value={13}>13</MenuItem>
+                                  <MenuItem value={14}>14</MenuItem>
+                                  <MenuItem value={15}>15</MenuItem>
+                                  <MenuItem value={16}>16</MenuItem>
+                                  <MenuItem value={17}>17</MenuItem>
+                                  <MenuItem value={18}>18</MenuItem>
+                                </Select>
+                              </FormControl>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </Paper>
+                      </Paper>
                     </div>
                   )}
-                  { activeStep !== 3 && (
-                     <div className={classes.buttonBar}>
-                     { activeStep !== 2 ? (
-                       <Button
-                       disabled={activeStep === 0}
-                       onClick={this.handleBack}
-                       className={classes.backButton}
-                       size='large'
-                       >
-                         Back
-                       </Button>
-                     ) : (
-                       <Button
-                       disabled={activeStep === 0}
-                       onClick={this.handleBack}
-                       className={classes.backButton}
-                       size='large'
-                       >
-                         Cancel
-                       </Button>
-                     )}
-                     <Button 
-                       variant="contained"
-                       color="primary"
-                       onClick={this.handleNext}
-                       size='large'
-                       style={this.state.receivingAccount.length ? {background: classes.button, color: 'white'} : {}}
-                       disabled={!this.state.receivingAccount.length}
-                     >
-                       {this.stepActions()}
-                     </Button>
-                   </div> 
+                  {activeStep === 1 && (
+                    <div className={classes.smallContainer}>
+                      <Paper className={classes.paper}>
+                        <Grid item container xs={12}>
+                          <Grid item xs={12}>
+                            <Typography variant="subtitle1" gutterBottom>
+                              Choose the session(s) you want for{' '}
+                              {this.state.childName}
+                            </Typography>
+
+                            <FormGroup>
+                              <FormControlLabel
+                                control={
+                                  <Checkbox
+                                    checked={session_1}
+                                    onChange={this.handleChangeCheckbox(
+                                      'session_1'
+                                    )}
+                                    value="session_1"
+                                  />
+                                }
+                                label="Session 1"
+                              />
+                              <FormControlLabel
+                                control={
+                                  <Checkbox
+                                    checked={session_2}
+                                    onChange={this.handleChangeCheckbox(
+                                      'session_2'
+                                    )}
+                                    value="session_2"
+                                  />
+                                }
+                                label="Session 2"
+                              />
+                              <FormControlLabel
+                                control={
+                                  <Checkbox
+                                    checked={session_3}
+                                    onChange={this.handleChangeCheckbox(
+                                      'session_3'
+                                    )}
+                                    value="session_3"
+                                  />
+                                }
+                                label="Session 3"
+                              />
+                              <FormControlLabel
+                                control={
+                                  <Checkbox
+                                    checked={session_4}
+                                    onChange={this.handleChangeCheckbox(
+                                      'session_4'
+                                    )}
+                                    value="session_4"
+                                  />
+                                }
+                                label="Session 4"
+                              />
+                              <FormControlLabel
+                                control={
+                                  <Checkbox
+                                    checked={session_5}
+                                    onChange={this.handleChangeCheckbox(
+                                      'session_5'
+                                    )}
+                                    value="session_5"
+                                  />
+                                }
+                                label="Session 5"
+                              />
+                              <FormControlLabel
+                                control={
+                                  <Checkbox
+                                    checked={session_6}
+                                    onChange={this.handleChangeCheckbox(
+                                      'session_6'
+                                    )}
+                                    value="session_6"
+                                  />
+                                }
+                                label="Session 6"
+                              />
+                            </FormGroup>
+                          </Grid>
+                        </Grid>
+                      </Paper>
+                    </div>
                   )}
-                  
+                  {activeStep === 2 && (
+                    <div className={classes.smallContainer}>
+                      <Paper className={classes.paper}>
+                        <div>
+                          <div style={{ marginBottom: 32 }}>
+                            <Typography variant="subtitle1" gutterBottom>
+                              Select Time
+                            </Typography>
+                          </div>
+                          <div
+                            style={{
+                              display: 'flex',
+                              flexDirection: 'column'
+                            }}>
+                            {this.timeSelectFields().map(time => {
+                              let name =
+                                time
+                                  .split('_')
+                                  .join(' ')
+                                  .charAt(0)
+                                  .toUpperCase() +
+                                time
+                                  .split('_')
+                                  .join(' ')
+                                  .slice(1);
+
+                              let stateTime = time.split('_').join('Time');
+                              return (
+                                <div
+                                  style={{
+                                    flex: 1,
+                                    width: '300px',
+                                    padding: '10px 0px'
+                                  }}>
+                                  <FormControl
+                                    style={{
+                                      flex: 1,
+                                      width: '300px',
+                                      padding: '10px 0px'
+                                    }}>
+                                    <InputLabel htmlFor="time-select-simple">
+                                      {name}
+                                    </InputLabel>
+                                    <Select
+                                      value={this.state[stateTime]}
+                                      onChange={this.handleChange}
+                                      inputProps={{
+                                        name: time.split('_').join('Time'),
+                                        id: time
+                                      }}>
+                                      <MenuItem value="">
+                                        <em>None</em>
+                                      </MenuItem>
+                                      <MenuItem value={1}>
+                                        9AM - 11:30AM
+                                      </MenuItem>
+                                      <MenuItem value={2}>
+                                        11:30AM - 2:30PM
+                                      </MenuItem>
+                                      <MenuItem value={3}>
+                                        2:30PM - 5:30PM
+                                      </MenuItem>
+                                    </Select>
+                                  </FormControl>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </Paper>
+                    </div>
+                  )}
+                  {activeStep === 3 && (
+                    <div className={classes.smallContainer}>
+                      <Paper className={classes.paper}>
+                        <div>
+                          <div style={{ marginBottom: 32 }}>
+                            <Typography variant="subtitle1" gutterBottom>
+                              Add notes if necessary
+                            </Typography>
+                          </div>
+                          <div
+                            style={{
+                              display: 'flex',
+                              flexDirection: 'column'
+                            }}>
+                            {this.timeSelectFields().map(time => {
+                              let name =
+                                time
+                                  .split('_')
+                                  .join(' ')
+                                  .charAt(0)
+                                  .toUpperCase() +
+                                time
+                                  .split('_')
+                                  .join(' ')
+                                  .slice(1);
+
+                              let stateNotes = time.split('_').join('Notes');
+                              console.log('State Notes', stateNotes);
+                              return (
+                                <div
+                                  style={{
+                                    flex: 1,
+                                    width: '300px',
+                                    padding: '10px 0px'
+                                  }}>
+                                  <FormControl
+                                    style={{
+                                      flex: 1,
+                                      width: '300px',
+                                      padding: '10px 0px'
+                                    }}>
+                                    <TextField
+                                      placeholder={name + ' Notes'}
+                                      value={this.state[stateNotes]}
+                                      name={stateNotes}
+                                      onChange={e =>
+                                        this.handleChange({
+                                          ...e,
+                                          name: stateNotes
+                                        })
+                                      }
+                                    />
+                                  </FormControl>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </Paper>
+                    </div>
+                  )}
+                  {activeStep === 4 && (
+                    <div className={classes.bigContainer}>
+                      <Paper className={classes.paper}>
+                        <div
+                          style={{ display: 'flex', justifyContent: 'center' }}>
+                          <div style={{ width: 380, textAlign: 'center' }}>
+                            <div style={{ marginBottom: 32 }}>
+                              <Typography
+                                variant="h6"
+                                style={{ fontWeight: 'bold' }}
+                                gutterBottom>
+                                Collecting your data
+                              </Typography>
+                              <Typography variant="body2" gutterBottom>
+                                We are processing your request
+                              </Typography>
+                            </div>
+                            <div>
+                              <Fade
+                                in={loading}
+                                style={{
+                                  transitionDelay: loading ? '800ms' : '0ms'
+                                }}
+                                unmountOnExit>
+                                <CircularProgress
+                                  style={{
+                                    marginBottom: 32,
+                                    width: 100,
+                                    height: 100
+                                  }}
+                                />
+                              </Fade>
+                            </div>
+                          </div>
+                        </div>
+                      </Paper>
+                    </div>
+                  )}
+                  {activeStep !== 4 && (
+                    <div className={classes.buttonBar}>
+                      {activeStep !== 3 ? (
+                        <Button
+                          disabled={activeStep === 0}
+                          onClick={this.handleBack}
+                          className={classes.backButton}
+                          size="large">
+                          Back
+                        </Button>
+                      ) : (
+                        <Button
+                          disabled={activeStep === 0}
+                          onClick={this.handleBack}
+                          className={classes.backButton}
+                          size="large">
+                          Back
+                        </Button>
+                      )}
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={this.handleNext}
+                        size="large"
+                        style={
+                          this.state.age.length
+                            ? { background: classes.button, color: 'white' }
+                            : {}
+                        }
+                        disabled={this.isNextDisabled(activeStep)}>
+                        {this.stepActions()}
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </Grid>
             </Grid>
           </Grid>
         </div>
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default withRouter(withStyles(styles)(Signup))
+export default withRouter(withStyles(styles)(Signup));

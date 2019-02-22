@@ -138,7 +138,7 @@ class SwipeDialog extends Component {
             </Typography>
           </div>
           <div>
-            <Button component={Link} to='/dashboard' variant='contained' onClick={this.handleClose} color="primary" autoFocus>
+            <Button component={Link} to='/dash' variant='contained' onClick={this.handleClose} color="primary" autoFocus>
                 Getting started
             </Button>
           </div>

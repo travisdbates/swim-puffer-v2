@@ -1,0 +1,10 @@
+query parent($email: "bobfitz@parent.com") {
+   parent(email: $email) {
+        fullName
+        firstName
+        lastName
+        phone
+        email
+   }
+  }
+

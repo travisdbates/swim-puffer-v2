@@ -1,0 +1,46 @@
+.dateContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 10px; }
+
+.dateTitle {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3px solid rgba(85, 179, 176, 0.634);
+  font-size: 3em;
+  margin-bottom: 15px; }
+
+.timeValid {
+  border: 1px solid #2D6464;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  font-weight: 200;
+  font-size: 2em;
+  cursor: pointer;
+  border-radius: 10px; }
+
+.timeInvalid {
+  border: 1px solid #2D6464;
+  background-color: rgba(161, 18, 18, 0.107);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  font-weight: 200;
+  font-size: 2em;
+  cursor: not-allowed;
+  border-radius: 10px; }
+
+.timeButton {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 200; }

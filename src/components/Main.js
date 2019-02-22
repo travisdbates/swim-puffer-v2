@@ -1,4 +1,4 @@
-import React,  { Component } from 'react';
+import React, { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { withRouter } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -18,7 +18,7 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.grey['100'],
     overflow: 'hidden',
-    background: `url(${backgroundShape}) no-repeat`,
+    //background: `url(${backgroundShape}) no-repeat`,
     backgroundSize: 'cover',
     backgroundPosition: '0 400px',
     paddingBottom: 200
@@ -33,7 +33,7 @@ const styles = theme => ({
   paper: {
     padding: theme.spacing.unit * 3,
     textAlign: 'left',
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.secondary
   },
   rangeLabel: {
     display: 'flex',
@@ -60,7 +60,7 @@ const styles = theme => ({
     textAlign: 'center'
   },
   block: {
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing.unit * 2
   },
   box: {
     marginBottom: 40,
@@ -91,29 +91,28 @@ const styles = theme => ({
 });
 
 class Main extends Component {
-
   state = {
     learnMoredialog: false,
     getStartedDialog: false
   };
 
   componentDidMount() {}
-    
-  openDialog = (event) => {
-    this.setState({learnMoredialog: true});
-  }
 
-  dialogClose = (event) => {
-    this.setState({learnMoredialog: false});
-  }
+  openDialog = event => {
+    this.setState({ learnMoredialog: true });
+  };
 
-  openGetStartedDialog = (event) => {
-    this.setState({getStartedDialog: true});
-  }
+  dialogClose = event => {
+    this.setState({ learnMoredialog: false });
+  };
 
-  closeGetStartedDialog = (event) => {
-    this.setState({getStartedDialog: false});
-  }
+  openGetStartedDialog = event => {
+    this.setState({ getStartedDialog: true });
+  };
+
+  closeGetStartedDialog = event => {
+    this.setState({ getStartedDialog: false });
+  };
 
   render() {
     const { classes } = this.props;
@@ -122,20 +121,31 @@ class Main extends Component {
         <CssBaseline />
         <Topbar />
         <div className={classes.root}>
-          <Grid container justify="center"> 
-            <Grid spacing={24} alignItems="center" justify="center" container className={classes.grid}>
+          <Grid container justify="center">
+            <Grid
+              spacing={24}
+              alignItems="center"
+              justify="center"
+              container
+              className={classes.grid}>
               <Grid item xs={12} md={4}>
                 <Paper className={classes.paper}>
                   <div className={classes.box}>
-                    <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                    <Typography
+                      style={{ textTransform: 'uppercase' }}
+                      color="secondary"
+                      gutterBottom>
                       First title
                     </Typography>
                     <Typography variant="body1" gutterBottom>
-                      A first title style <br/> with two lines
+                      A first title style <br /> with two lines
                     </Typography>
                   </div>
-                  <div style={{display: 'flex', justifyContent: 'flex-end'}}>                          
-                    <Button color='primary' variant="contained" className={classes.actionButtom}>
+                  <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      className={classes.actionButtom}>
                       Learn more
                     </Button>
                   </div>
@@ -144,15 +154,21 @@ class Main extends Component {
               <Grid item xs={12} md={4}>
                 <Paper className={classes.paper}>
                   <div className={classes.box}>
-                    <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                    <Typography
+                      style={{ textTransform: 'uppercase' }}
+                      color="secondary"
+                      gutterBottom>
                       Another box
                     </Typography>
                     <Typography variant="body1" gutterBottom>
                       A default box
                     </Typography>
                   </div>
-                  <div style={{display: 'flex', justifyContent: 'flex-end'}}>                          
-                    <Button color='primary' variant="contained" className={classes.actionButtom}>
+                  <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      className={classes.actionButtom}>
                       Learn more
                     </Button>
                   </div>
@@ -161,56 +177,71 @@ class Main extends Component {
               <Grid item xs={12} md={4}>
                 <Paper className={classes.paper}>
                   <div className={classes.box}>
-                    <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                    <Typography
+                      style={{ textTransform: 'uppercase' }}
+                      color="secondary"
+                      gutterBottom>
                       A box with a carousel
                     </Typography>
                     <Typography variant="body1" gutterBottom>
-                      If you click in Getting Started, you will see a nice carousel
+                      If you click in Getting Started, you will see a nice
+                      carousel
                     </Typography>
                   </div>
                   <div className={classes.alignRight}>
-                    <Button onClick={this.openDialog}  variant="outlined" className={classes.actionButtom}>
+                    <Button
+                      onClick={this.openDialog}
+                      variant="outlined"
+                      className={classes.actionButtom}>
                       Learn more
-                    </Button>                          
-                    <Button onClick={this.openGetStartedDialog} color='primary' variant="contained" className={classes.actionButtom}>
+                    </Button>
+                    <Button
+                      onClick={this.openGetStartedDialog}
+                      color="primary"
+                      variant="contained"
+                      className={classes.actionButtom}>
                       Dashboard
                     </Button>
                   </div>
                 </Paper>
               </Grid>
               <Grid container item xs={12}>
-                  <Grid item xs={12}>
-                    <Paper className={classes.paper}>
-                      <div>
-                        <div className={classes.box}>
-                          <Typography color='secondary' gutterBottom>
-                            Full box
-                          </Typography>
-                          <Typography variant="body1" gutterBottom>
-                            This is an example of a full-width box
-                          </Typography>
-                        </div>
-                        <div className={classes.alignRight}>                          
-                          <Button color='primary' variant="contained" className={classes.actionButtom}>
-                            Learn more
-                          </Button>
-                        </div>
+                <Grid item xs={12}>
+                  <Paper className={classes.paper}>
+                    <div>
+                      <div className={classes.box}>
+                        <Typography color="secondary" gutterBottom>
+                          Full box
+                        </Typography>
+                        <Typography variant="body1" gutterBottom>
+                          This is an example of a full-width box
+                        </Typography>
                       </div>
-                    </Paper>
+                      <div className={classes.alignRight}>
+                        <Button
+                          color="primary"
+                          variant="contained"
+                          className={classes.actionButtom}>
+                          Learn more
+                        </Button>
+                      </div>
+                    </div>
+                  </Paper>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
-          <SwipeDialog 
+          <SwipeDialog
             open={this.state.learnMoredialog}
-            onClose={this.dialogClose} />
+            onClose={this.dialogClose}
+          />
           <InstructionDialog
             open={this.state.getStartedDialog}
-            onClose={this.closeGetStartedDialog} 
+            onClose={this.closeGetStartedDialog}
           />
         </div>
       </React.Fragment>
-    )
+    );
   }
 }
 

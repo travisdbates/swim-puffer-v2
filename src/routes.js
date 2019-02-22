@@ -1,22 +1,42 @@
-import React from 'react'
-import { Route, HashRouter, Switch } from 'react-router-dom'
-import Dashboard from './components/Dashboard'
-import Wizard from './components/Wizard'
-import Cards from './components/Cards'
-import Main from './components/Main'
-import Signup from './components/Signup'
-import ScrollToTop from './components/ScrollTop'
+import React from 'react';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import Wizard from './components/Wizard';
+import Cards from './components/Cards';
+import Main from './components/Main';
+import Signup from './components/Signup';
+import ScrollToTop from './components/ScrollTop';
+import Home from './pages/Home/Home';
+import FAQ from './pages/FAQ/FAQ';
+import Callback from './pages/Callback/Callback';
+import Auth from './utils/auth';
+const auth = new Auth();
+
+const handleAuthentication = (nextState, replace) => {
+  if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    auth.handleAuthentication();
+  }
+};
 
 export default props => (
-    <HashRouter>
-      <ScrollToTop>
-        <Switch>
-          <Route exact path='/' component={ Main } />
-          <Route exact path='/dashboard' component={ Dashboard } />
-          <Route exact path='/signup' component={ Signup } />
-          <Route exact path='/wizard' component={ Wizard } />
-          <Route exact path='/cards' component={ Cards } />
-        </Switch>
-      </ScrollToTop>
-    </HashRouter>
-  )
+  <BrowserRouter>
+    <ScrollToTop>
+      <Switch>
+        <Route
+          path="/callback"
+          render={props => {
+            handleAuthentication(props);
+            return <Callback {...props} />;
+          }}
+        />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/faq" component={FAQ} />
+        <Route exact path="/main" component={Main} />
+        <Route exact path="/dash" component={Dashboard} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/wizard" component={Wizard} />
+        <Route exact path="/cards" component={Cards} />
+      </Switch>
+    </ScrollToTop>
+  </BrowserRouter>
+);

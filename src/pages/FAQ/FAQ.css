@@ -1,0 +1,82 @@
+.Collapsible {
+  background-color: #2d6464;
+  width: 80%;
+  font-size: 1.5em; }
+
+.Collapsible__contentInner {
+  padding: 10px;
+  border: 1px solid #ececec;
+  border-radius: 7px;
+  margin: 5px; }
+  .Collapsible__contentInner cp {
+    font-size: 14px;
+    line-height: 20px;
+    color: white;
+    font-size: 1em; }
+
+.Collapsible__trigger {
+  display: block;
+  font-weight: 200;
+  text-decoration: none;
+  color: grey;
+  position: relative;
+  border: 1px solid white;
+  border-radius: 7px;
+  padding: 10px 30px;
+  background: #2d6464;
+  color: white;
+  margin: 5px;
+  cursor: pointer; }
+  .Collapsible__trigger:after {
+    content: '\21E9';
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: block;
+    transition: transform 300ms;
+    margin-left: 15px; }
+  .Collapsible__trigger.is-open:after {
+    transform: rotateZ(180deg); }
+  .Collapsible__trigger.is-disabled {
+    opacity: 0.5;
+    background-color: grey; }
+
+.CustomTriggerCSS {
+  background-color: lightcoral;
+  transition: background-color 200ms ease; }
+
+.CustomTriggerCSS--open {
+  background-color: darkslateblue; }
+
+.Collapsible__custom-sibling {
+  padding: 5px;
+  font-size: 12px;
+  background-color: #cbb700;
+  color: #d2d2d2; }
+
+.boxSpacing2 {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  justify-content: center; }
+
+.test {
+  width: 80%;
+  height: auto;
+  background-color: white;
+  position: absolute;
+  margin-top: -10vh;
+  -webkit-box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.1);
+  padding: 50px;
+  color: gray;
+  text-align: justify;
+  text-justify: inter-word; }
+  .test .we {
+    font-size: 5em;
+    font-weight: 700;
+    color: #333333; }
+  .test .intro {
+    font-size: 3em;
+    font-weight: 200; }

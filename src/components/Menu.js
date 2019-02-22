@@ -5,7 +5,7 @@ const Menu = [
   },
   {
     label: "Dashboard",
-    pathname: "/dashboard"
+    pathname: "/dash"
   },
   {
     label: "Signup",

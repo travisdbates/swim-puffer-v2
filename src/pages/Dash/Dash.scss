@@ -1,0 +1,325 @@
+
+.diagtop-open {
+    -webkit-clip-path: polygon(0 0, 100% 100%, 100% 0);
+    clip-path: polygon(0 0, 100% 100%, 100% 0);
+    background-color: #55B3B0;    
+    width: 100%;
+    height: 90vh;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 4em;
+    color: white;
+    text-transform: uppercase;
+    padding-right: 2.5%;
+    margin-bottom: -88vh;
+    width: 97.5%;
+
+    transition: .74s;    
+
+    span{
+        position: relative;
+        top: 25%;
+        padding-right: 6%
+    }
+}
+
+.diagtop-open:hover{
+    background-color: rgba(85, 179, 176, 0.8);    
+    // text-shadow: 2px 2px 8px #000;
+    cursor: pointer;
+}
+
+.diagbottom-open {
+    -webkit-clip-path: polygon(0 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+    background-color: #2D6464;
+    width: 97.5%;
+    height: 90vh;
+    // margin-top: -75px;
+    display: flex;
+    align-items: flex-end;
+    font-size: 4em;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 2.5%;
+
+    transition: .74s;
+
+    span{
+        position: relative;
+        bottom: 25%;
+        padding-left: 6%;
+    }
+}
+
+.diagbottom-open:hover{
+    background-color: #1f4242;    
+    // text-shadow: 2px 2px 8px #000;
+    cursor: pointer;
+}
+
+.diagtop-close {
+    -webkit-clip-path: polygon(0 0, 100% 100%, 100% 0);
+    clip-path: polygon(0 0, 100% 100%, 100% 0);
+    background-color: #55B3B0;    
+    width: 100%;
+    height: 150px;
+    margin-bottom: -148px;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 4em;
+    color: white;
+    text-transform: uppercase;
+    padding-right: 2.5%;
+    width: 97.5%;
+
+    transition: .74s;
+
+    span{
+        position: relative;
+        bottom: 0px;
+    }
+}
+
+.diagtop-close:hover{
+    background-color: rgba(85, 179, 176, 0.8);    
+    // text-shadow: 2px 2px 8px #000;
+    cursor: pointer;
+}
+
+.diagbottom-close {
+    -webkit-clip-path: polygon(0 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+    background-color: #2D6464;
+    width: 97.5%;
+    height: 150px;
+    display: flex;
+    align-items: flex-end;
+    font-size: 4em;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 2.5%;
+
+    transition: .74s;
+    
+    span{
+        position: relative;
+        bottom: 0px;
+    }
+}
+
+.diagbottom-close:hover{
+    background-color: #1f4242;  
+    // text-shadow: 2px 2px 8px #000;
+    cursor: pointer;
+}
+
+.dashMain {
+    margin-top: -1px;
+    padding-top: 20px;
+    width: 100vw;
+    min-height: 90vh;
+    height: auto;
+    background-color: #2D6464;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .children-header{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 1rem 0;
+        color: white;
+
+        h3{
+            font-size: 2.5rem;
+            width: 200px;
+            text-align: center;
+            text-shadow: 2px 2px 8px #000;
+        }
+    }
+    .children-info{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 1rem 0;
+        color: white;
+        
+        span{
+            width: 200px;
+            text-align: center;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 8px #000;
+            
+        }
+
+    }
+    
+    .children-info:hover{
+        background: rgba(0, 0, 0, 0.151);
+    }
+
+    .sign-up{
+        margin: 1rem !important;
+        padding: .5rem !important;
+        display: none !important;
+    }
+}
+
+
+@media(max-width: 1023px){
+
+    .diagtop-open{
+
+        span{
+            font-size: 3rem;
+            // padding-right: 1.5rem;
+        }
+    }
+
+    .diagbottom-open{
+
+        span{
+            font-size: 3rem;
+            // padding-left: 1.5rem;
+            
+        }
+    }
+
+    .diagtop-close{
+
+        span{
+            font-size: 3rem;
+        }
+    }
+
+    .diagbottom-close{
+
+        span{
+            font-size: 3rem;
+        }
+    }
+    
+    .dashMain{
+            flex-direction: row;
+            overflow: scroll;
+
+        .children-header{
+            flex-direction: column;
+            
+            h3{
+                text-decoration: underline;
+                margin: 20px;
+            }
+        }
+
+        .children-info{
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 1rem 0;   
+            border-left: 2px solid white;
+            
+            span{
+                font-size: 1.5rem;
+                width: 200px;
+                text-align: center;
+                text-shadow: none;
+                margin: 25px 20px;
+                padding-top: 1rem;
+            }
+        }
+    }
+}
+
+
+@media(max-width: 650px){
+    .diagtop-open{
+
+        span{
+            font-size: 1.5rem;
+            padding: 0px;
+        }
+    }
+
+    .diagbottom-open{
+
+        span{
+            font-size: 1.5rem;
+            padding: 0px;
+            
+        }
+    }
+
+    .diagtop-close{
+
+        span{
+            font-size: 1.5rem;
+        }
+    }
+
+    .diagbottom-close{
+
+        span{
+            font-size: 1.5rem;
+        }
+    }
+
+    .dashMain{
+
+        .children-header{
+            h3{
+                font-size: 1.5rem;
+                width: 100px;
+                margin: 20px 0px;
+            }
+        }
+    
+        .children-info{
+            span{
+                margin: 18px 10px;
+                font-size: 1rem;
+                width: 100px;
+            }
+        }
+    }
+
+}
+
+
+@media(max-width: 400px){
+    .diagtop-open{
+
+        span{
+            font-size: 1.6rem;
+            padding: 0px;
+        }
+    }
+
+    .diagbottom-open{
+
+        span{
+            font-size: 1.6rem;
+            padding: 0px;
+            
+        }
+    }
+
+    .diagtop-close{
+
+        span{
+            font-size: 1.6rem;
+        }
+    }
+
+    .diagbottom-close{
+
+        span{
+            font-size: 1.6rem;
+        }
+    }
+}
+

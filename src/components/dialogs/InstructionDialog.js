@@ -29,10 +29,10 @@ class InstructionDialog extends Component {
             This is a sample introduction
           </Typography>
         </div>
-        <Button component={Link} to='/dashboard' className={classes.bottomMargin} variant='contained' onClick={this.handleClose} color="primary" autoFocus>
+        <Button component={Link} to='/dash' className={classes.bottomMargin} variant='contained' onClick={this.handleClose} color="primary" autoFocus>
           Getting started
         </Button>
-        <Button component={Link} to='/dashboard' variant='outlined' onClick={this.handleClose} color="primary" autoFocus>
+        <Button component={Link} to='/dash' variant='outlined' onClick={this.handleClose} color="primary" autoFocus>
           Dashboard
         </Button>
       </BaseDialog>   
