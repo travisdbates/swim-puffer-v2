@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Nav from '../nav/Nav';
 import axios from 'axios';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -185,7 +184,6 @@ export default class SwimTeam extends Component {
     ];
     return (
       <div>
-        <Nav />
         <div
           style={{
             display: 'flex',

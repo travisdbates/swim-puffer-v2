@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 
-import Nav from '../nav/Nav';
 import axios from 'axios';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router-dom';
 import { orderBy } from 'lodash';
-
+import { gql } from 'graphql';
 import MediaQuery from 'react-responsive';
 
 import './Dash.css';
@@ -199,8 +198,6 @@ export default class Dash extends Component {
 
     return (
       <div className="dash-container">
-        <Nav />
-
         <MediaQuery minWidth={1224}>
           <div
             className={`diagtop-${this.state.display}`}

@@ -108,12 +108,6 @@ class Topbar extends Component {
     if (this.props.currentPath === '/signup') {
       return 2;
     }
-    if (this.props.currentPath === '/wizard') {
-      return 3;
-    }
-    if (this.props.currentPath === '/cards') {
-      return 4;
-    }
   };
 
   render() {
@@ -151,7 +145,6 @@ class Topbar extends Component {
                       anchor="right"
                       open={this.state.menuDrawer}
                       onClose={this.mobileMenuClose}>
-                      <AppBar title="Menu" />
                       <List>
                         {Menu.map((item, index) => (
                           <ListItem

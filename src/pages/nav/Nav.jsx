@@ -101,49 +101,6 @@ export default class Nav extends Component {
             </span>
           )}
         </div>
-        <div className="menuBurger">
-          <Menu right>
-            <NavLink
-              className="loginBtn"
-              activeClassName="loginBtnAct"
-              exact
-              to="/">
-              Home
-            </NavLink>
-            <NavLink
-              className="loginBtn"
-              activeClassName="loginBtnAct"
-              to="/faq">
-              FAQ
-            </NavLink>
-            {!localStorage.getItem('isLoggedIn') ? null : (
-              <div>
-                <NavLink
-                  to="/dash"
-                  className="loginBtn"
-                  activeClassName="loginBtnAct">
-                  Dashboard
-                </NavLink>
-              </div>
-            )}
-            {this.adminButton()}
-            {!localStorage.getItem('isLoggedIn') ? (
-              <span
-                onClick={() => auth.login()}
-                className="loginBtn"
-                activeClassName="loginBtnAct">
-                Login/Signup
-              </span>
-            ) : (
-              <span
-                onClick={() => auth.logout()}
-                className="loginBtn"
-                activeClassName="loginBtnAct">
-                Logout
-              </span>
-            )}
-          </Menu>
-        </div>
       </header>
     );
   }

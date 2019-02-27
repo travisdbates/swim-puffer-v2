@@ -1,10 +1,9 @@
-query parent($email: "bobfitz@parent.com") {
-   parent(email: $email) {
-        fullName
-        firstName
-        lastName
-        phone
-        email
-   }
-  }
+query getParent($email: String!) {
+  getParent(email: $email) {
+    fullName
 
+    lastName
+    phone
+    email
+  }
+}
