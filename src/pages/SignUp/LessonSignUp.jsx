@@ -6,7 +6,6 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import Paper from 'material-ui/Paper';
-import Nav from '../nav/Nav.jsx';
 import MediaQuery from 'react-responsive';
 import axios from 'axios';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
@@ -359,9 +358,7 @@ class SignUp extends Component {
           </div>
         ) : null}
 
-        <MediaQuery maxWidth={1224}>
-          {this.props.mobile ? null : <Nav />}
-        </MediaQuery>
+        <MediaQuery maxWidth={1224} />
         <Stepper
           activeStep={stepIndex}
           orientation="vertical"

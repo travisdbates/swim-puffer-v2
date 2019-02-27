@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { Parallax } from 'react-parallax';
 
-import Nav from '../nav/Nav';
 import 'animate.css/animate.min.css';
 
 import './FAQ.css';
@@ -19,7 +18,6 @@ export default class Home extends Component {
 
     return (
       <div className="outer">
-        <Nav />
         <Parallax
           bgImage={image}
           blur={{

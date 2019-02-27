@@ -16,8 +16,10 @@ import ParentChildTable from './table/ParentChildTable';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import Link from '@material-ui/core/Link';
-
+import { Query } from 'react-apollo';
 import Topbar from './Topbar';
+import gql from 'graphql-tag';
+import jwt from 'jsonwebtoken';
 
 const numeral = require('numeral');
 numeral.defaultFormat('0,000');
@@ -121,48 +123,35 @@ const styles = theme => ({
 
 const monthRange = Months;
 
+const PARENT_QUERY = gql`
+  query getCurrentParent($email: String!) {
+    getParent(email: $email) {
+      firstName
+      lastName
+      fullName
+      email
+      phone
+    }
+    getParentStudents(email: $email) {
+      firstName
+      sessionPreference
+      timePreference
+      sessionAssigned
+      timeAssigned
+    }
+  }
+`;
 class Dashboard extends Component {
   state = {
     loading: false,
-    amount: 15000,
-    period: 3,
-    start: 0,
-    monthlyInterest: 0,
-    totalInterest: 0,
-    monthlyPayment: 0,
-    totalPayment: 0,
     data: []
   };
 
-  updateValues() {
-    const { amount, period, start } = this.state;
-    const monthlyInterest =
-      (amount * Math.pow(0.01 * 1.01, period)) / Math.pow(0.01, period - 1);
-    const totalInterest = monthlyInterest * (period + start);
-    const totalPayment = amount + totalInterest;
-    const monthlyPayment =
-      period > start ? totalPayment / (period - start) : totalPayment / period;
-
-    const data = Array.from({ length: period + start }, (value, i) => {
-      const delayed = i < start;
-      return {
-        name: monthRange[i],
-        Type: delayed ? 0 : Math.ceil(monthlyPayment).toFixed(0),
-        OtherType: Math.ceil(monthlyInterest).toFixed(0)
-      };
-    });
-
-    this.setState({
-      monthlyInterest,
-      totalInterest,
-      totalPayment,
-      monthlyPayment,
-      data
-    });
-  }
-
   componentDidMount() {
-    this.updateValues();
+    let email = jwt.decode(localStorage.getItem('idToken')).email;
+    this.setState({
+      email
+    });
   }
 
   handleChangeAmount = (event, value) => {
@@ -182,56 +171,68 @@ class Dashboard extends Component {
 
   render() {
     const { classes } = this.props;
-    const {
-      amount,
-      period,
-      start,
-      monthlyPayment,
-      monthlyInterest,
-      data,
-      loading
-    } = this.state;
     const currentPath = this.props.location.pathname;
 
     return (
-      <React.Fragment>
-        <Fab color="primary" aria-label="Add" className={classes.fab}>
-          <Link href="/signup" style={{ color: 'white' }}>
-            <AddIcon linkButton={true} />
-          </Link>
-        </Fab>
-        <CssBaseline />
-        <Topbar currentPath={currentPath} />
-        <div className={classes.root}>
-          <Grid container justify="center">
-            <Grid
-              spacing={24}
-              alignItems="center"
-              justify="center"
-              container
-              className={classes.grid}>
-              <Grid item xs={12}>
-                <div className={classes.topBar}>
-                  <div className={classes.block}>
-                    <Typography variant="h6" gutterBottom>
-                      Dashboard
-                    </Typography>
-                    <Typography variant="body2">
-                      Here you can add your children and check back to see your
-                      assigned times.
-                    </Typography>
-                  </div>
-                </div>
-              </Grid>
+      <Query
+        query={PARENT_QUERY}
+        variables={{
+          email: this.state.email
+        }}>
+        {({ loading, error, data }) => {
+          console.log({ error });
+          console.log({ data });
+          if (loading) {
+            return <div />;
+          }
+          if (error) {
+            return <div>Error!</div>;
+          }
+          return (
+            <React.Fragment>
+              <Fab color="primary" aria-label="Add" className={classes.fab}>
+                <Link href="/signup" style={{ color: 'white' }}>
+                  <AddIcon linkButton={true} />
+                </Link>
+              </Fab>
+              <CssBaseline />
+              <Topbar currentPath={currentPath} />
+              <div className={classes.root}>
+                <Grid container justify="center">
+                  <Grid
+                    spacing={24}
+                    alignItems="center"
+                    justify="center"
+                    container
+                    className={classes.grid}>
+                    <Grid item xs={12}>
+                      <div className={classes.topBar}>
+                        <div className={classes.block}>
+                          <Typography variant="h6" gutterBottom>
+                            {!loading &&
+                              data.getParent &&
+                              data.getParent.firstName + "'s"}{' '}
+                            Dashboard
+                          </Typography>
+                          <Typography variant="body2">
+                            Here you can add your children and check back to see
+                            your assigned times.
+                          </Typography>
+                        </div>
+                      </div>
+                    </Grid>
 
-              <Grid container spacing={24} xs={12} justify="left">
-                <Loading loading={loading} />
-                <ParentChildTable />
-              </Grid>
-            </Grid>
-          </Grid>
-        </div>
-      </React.Fragment>
+                    <Grid container spacing={24} xs={12} justify="left">
+                      <Loading loading={loading} />
+                      <ParentChildTable data={[data.getParentStudents]} />
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </div>
+            </React.Fragment>
+          );
+        }}
+      </Query>
     );
   }
 }
