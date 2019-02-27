@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Nav from '../nav/Nav';
 import { Parallax } from 'react-parallax';
 
 import 'animate.css/animate.min.css';
@@ -18,6 +18,7 @@ export default class Home extends Component {
 
     return (
       <div className="outer">
+        <Nav />
         <Parallax
           bgImage={image}
           blur={{
