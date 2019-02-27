@@ -15,7 +15,7 @@ import Loading from './common/Loading';
 import ParentChildTable from './table/ParentChildTable';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import Link from '@material-ui/core/Link';
+import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import Topbar from './Topbar';
 import gql from 'graphql-tag';
@@ -191,7 +191,7 @@ class Dashboard extends Component {
           return (
             <React.Fragment>
               <Fab color="primary" aria-label="Add" className={classes.fab}>
-                <Link href="/signup" style={{ color: 'white' }}>
+                <Link to="/signup" style={{ color: 'white' }}>
                   <AddIcon linkButton={true} />
                 </Link>
               </Fab>
