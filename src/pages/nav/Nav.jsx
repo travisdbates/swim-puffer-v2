@@ -74,7 +74,7 @@ export default class Nav extends Component {
               FAQ
             </NavLink>
           </div>
-          {!localStorage.getItem('isLoggedIn') ? null : (
+          {/* {!localStorage.getItem('isLoggedIn') ? null : (
             <div>
               <NavLink
                 to="/dash"
@@ -84,8 +84,8 @@ export default class Nav extends Component {
               </NavLink>
             </div>
           )}
-          <div>{this.adminButton()}</div>
-          {!localStorage.getItem('isLoggedIn') ? (
+          <div>{this.adminButton()}</div> */}
+          {/* {!localStorage.getItem('isLoggedIn') ? (
             <span
               onClick={() => auth.login()}
               className="loginBtn"
@@ -99,7 +99,7 @@ export default class Nav extends Component {
               activeClassName="loginBtnAct">
               Logout
             </span>
-          )}
+          )} */}
         </div>
       </header>
     );
