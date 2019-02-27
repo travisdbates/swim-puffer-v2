@@ -4,7 +4,7 @@ module.exports = {
     clientID: process.env.REACT_APP_AUTH0_CLIENT_ID,
     redirectUri:
       process.env.REACT_APP_AUTH0_REDIRECT ||
-      'https://staging.swimpufferfish.com/staging',
+      'https://staging.swimpufferfish.com/callback',
     responseType: 'token id_token',
     scope: 'openid'
   }
