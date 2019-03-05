@@ -240,14 +240,14 @@ class Topbar extends Component {
                       {localStorage.getItem('isLoggedIn') ? (
                         <Tab
                           component={Button}
-                          classes={{ root: classes.tabItem }}
+                          classes={classes.tabItem}
                           label={'Logout'}
                           onClick={() => auth.logout()}
                         />
                       ) : (
                         <Tab
                           component={Button}
-                          classes={{ root: classes.tabItem }}
+                          classes={classes.tabItem}
                           label={'Login/Signup'}
                           onClick={() => auth.login()}
                         />
