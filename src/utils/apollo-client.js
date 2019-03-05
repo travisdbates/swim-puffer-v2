@@ -7,7 +7,7 @@ const httpLink = createHttpLink({
   uri:
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:4000/graphql'
-      : ' https://swim-puffer-backend-qa.herokuapp.com/'
+      : ' https://swim-puffer-backend-qa.herokuapp.com/graphql'
 });
 
 const authLink = setContext((_, { headers }) => {
