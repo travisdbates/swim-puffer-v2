@@ -4,7 +4,10 @@ import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql'
+  uri:
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:4000/graphql'
+      : ' https://swim-puffer-backend-qa.herokuapp.com/'
 });
 
 const authLink = setContext((_, { headers }) => {
