@@ -1,6 +1,7 @@
 .outer {
-  font-family: "Oswald", sans-serif;
-  width: 100vw; }
+  font-family: 'Oswald', sans-serif;
+  width: 100vw;
+}
 
 .mainImg {
   height: 90vh;
@@ -9,25 +10,29 @@
   background-position: center center;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+}
 
 .divider {
   height: 5px;
   width: 30%;
-  background-color: #f1f1f1; }
+  background-color: #f1f1f1;
+}
 
 .welcome {
   font-size: 4vw;
   color: #f1f1f1;
   margin: 0px 50px;
   font-weight: 200;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
 .divWelDiv {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 90%; }
+  width: 90%;
+}
 
 .sideBySide {
   display: flex;
@@ -38,7 +43,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%);
+}
 
 .sideBySideL {
   display: flex;
@@ -55,13 +61,15 @@
   text-align: center;
   font-weight: 200;
   text-transform: uppercase;
-  font-size: 7vw; }
+  font-size: 7vw;
+}
 
 .boxSpacing {
   width: 100%;
   height: 40vh;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+}
 
 .test {
   width: 80%;
@@ -75,19 +83,22 @@
   padding: 50px;
   color: gray;
   text-align: justify;
-  text-justify: inter-word; }
-  .test .we {
-    font-size: 5em;
-    font-weight: 700;
-    color: #333333; }
-  .test .introHome {
-    font-size: 3em;
-    font-weight: 200; }
+  text-justify: inter-word;
+}
+.test .we {
+  font-size: 5em;
+  font-weight: 700;
+  color: #333333;
+}
+.test .introHome {
+  font-size: 3em;
+  font-weight: 200;
+}
 
 .signupButtonMid {
   width: auto;
   height: auto;
-  background-color: #2D6464;
+  background-color: #2d6464;
   color: white;
   border: 1px solid white;
   border-radius: 25px;
@@ -96,13 +107,15 @@
   font-weight: 200;
   font-size: 24px;
   margin-bottom: 35px;
-  margin-top: 35px; }
+  margin-top: 35px;
+}
 
 .signupButtonMid:hover {
   color: white;
   -webkit-box-shadow: 0px 0px 66px -12px white;
   -moz-box-shadow: 0px 0px 66px -12px white;
-  box-shadow: 0px 0px 66px -12px white; }
+  box-shadow: 0px 0px 66px -12px white;
+}
 
 .meetInst {
   width: 97.5%;
@@ -116,10 +129,11 @@
   text-transform: uppercase;
   -webkit-clip-path: polygon(0 0, 100% 100%, 0 100%);
   clip-path: polygon(0 0, 100% 100%, 0 100%);
-  background-color: #2D6464;
+  background-color: #2d6464;
   height: 150px;
   margin-bottom: -1px;
-  margin-top: 5vh; }
+  margin-top: 5vh;
+}
 
 .instructors {
   height: auto;
@@ -127,7 +141,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #2D6464; }
+  background-color: #2d6464;
+}
 
 .instructor {
   width: 31%;
@@ -143,22 +158,27 @@
   box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding: 54px;
-  transition: 0.34s; }
-  .instructor .instPic {
-    width: 100px;
-    border-radius: 50%;
-    margin-bottom: 2.5vh; }
-  .instructor .instName {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 2em; }
-  .instructor .paragraph {
-    font-weight: 200;
-    margin-top: 2.5vh;
-    color: rgba(88, 88, 88, 0.8); }
+  transition: 0.34s;
+}
+.instructor .instPic {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 2.5vh;
+}
+.instructor .instName {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2em;
+}
+.instructor .paragraph {
+  font-weight: 200;
+  margin-top: 2.5vh;
+  color: rgba(88, 88, 88, 0.8);
+}
 
 .instructor:hover {
-  padding: 38px 55px; }
+  padding: 38px 55px;
+}
 
 .diagtopb {
   -webkit-clip-path: polygon(0 0, 100% 100%, 0 100%);
@@ -172,15 +192,17 @@
   font-size: 4em;
   color: white;
   text-transform: uppercase;
-  padding-left: 2.5%; }
+  padding-left: 2.5%;
+}
 
 .diagbottomy {
   -webkit-clip-path: polygon(0 0, 100% 100%, 100% 0);
   clip-path: polygon(0 0, 100% 100%, 100% 0);
-  background-color: #2D6464;
+  background-color: #2d6464;
   width: 100%;
   height: 150px;
-  margin-top: -1px; }
+  margin-top: -1px;
+}
 
 .schedule {
   background-color: #55b3b0;
@@ -189,16 +211,18 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center; }
+  align-items: center;
+}
 
 .schedule2 {
-  background-color: #2D6464;
+  background-color: #2d6464;
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center; }
+  align-items: center;
+}
 
 .info {
   width: 90%;
@@ -213,26 +237,33 @@
   justify-content: space-around;
   padding: 0px 20px;
   font-size: 2em;
-  transition: 0.54s; }
-  .info .sessionName {
-    font-size: 2em; }
-  .info .verticalDivider {
-    width: 2px;
-    height: 90%;
-    background-color: #55b3b0; }
-  .info .verticalDividerS {
-    width: 2px;
-    height: 50%;
-    background-color: #55b3b0; }
-  .info .sessDesc {
-    color: rgba(133, 133, 133, 0.897);
-    font-weight: 200; }
-  .info .dates {
-    display: flex;
-    flex-direction: column; }
+  transition: 0.54s;
+}
+.info .sessionName {
+  font-size: 2em;
+}
+.info .verticalDivider {
+  width: 2px;
+  height: 90%;
+  background-color: #55b3b0;
+}
+.info .verticalDividerS {
+  width: 2px;
+  height: 50%;
+  background-color: #55b3b0;
+}
+.info .sessDesc {
+  color: rgba(133, 133, 133, 0.897);
+  font-weight: 200;
+}
+.info .dates {
+  display: flex;
+  flex-direction: column;
+}
 
 .info:hover {
-  height: 215px; }
+  height: 215px;
+}
 
 .diagbottomb {
   -webkit-clip-path: polygon(0 0, 100% 100%, 100% 0);
@@ -240,11 +271,14 @@
   background-color: #55b3b0;
   width: 100%;
   height: 150px;
-  margin-top: -1px; }
+  margin-top: -1px;
+}
 
 @media (max-height: 700px) {
   .meetInst {
-    margin-top: 20vh; } }
+    margin-top: 20vh;
+  }
+}
 
 @media (max-width: 900px) {
   .info {
@@ -260,40 +294,52 @@
     align-items: flex-start;
     justify-content: space-around;
     padding: 0px 20px;
-    font-size: 1em; }
-    .info .sessionName {
-      font-size: 2em; }
-    .info .verticalDivider {
-      width: 90%;
-      height: 2px;
-      background-color: #55b3b0; }
-    .info .verticalDividerS {
-      width: 50%;
-      height: 2px;
-      background-color: #55b3b0; }
-    .info .sessDesc {
-      color: rgba(133, 133, 133, 0.897);
-      font-weight: 200; }
-    .info .dates {
-      display: flex;
-      flex-direction: column; }
+    font-size: 1em;
+  }
+  .info .sessionName {
+    font-size: 2em;
+  }
+  .info .verticalDivider {
+    width: 90%;
+    height: 2px;
+    background-color: #55b3b0;
+  }
+  .info .verticalDividerS {
+    width: 50%;
+    height: 2px;
+    background-color: #55b3b0;
+  }
+  .info .sessDesc {
+    color: rgba(133, 133, 133, 0.897);
+    font-weight: 200;
+  }
+  .info .dates {
+    display: flex;
+    flex-direction: column;
+  }
   .info:hover {
-    height: 315px; } }
+    height: 315px;
+  }
+}
 
 @media (max-width: 768px) {
   .title {
     font-size: 1em;
-    margin-left: 10px; }
+    margin-left: 10px;
+  }
   .welcome {
     font-size: 15vw;
-    margin: 0px 20px; }
+    margin: 0px 20px;
+  }
   .sideBySideL {
-    font-size: 8vw; }
+    font-size: 8vw;
+  }
   .boxSpacing {
     width: 100%;
     height: 20vh;
     display: flex;
-    justify-content: center; }
+    justify-content: center;
+  }
   .test {
     width: 80%;
     height: auto;
@@ -303,26 +349,34 @@
     -webkit-box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.1);
-    padding: 30px; }
-    .test .we {
-      font-size: 2em;
-      font-weight: 700; }
-    .test .introHome {
-      font-size: 1.5em; }
+    padding: 30px;
+  }
+  .test .we {
+    font-size: 2em;
+    font-weight: 700;
+  }
+  .test .introHome {
+    font-size: 1.5em;
+  }
   .instructors {
     height: auto;
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    flex-direction: column; }
+    flex-direction: column;
+  }
   .instructor {
     width: 65%;
     margin: 3vh 1vh;
     padding: 10px 20px;
-    min-height: 0px; }
+    min-height: 0px;
+  }
   .meetInst {
     font-size: 2em;
-    margin-top: 5vh; }
+    margin-top: 5vh;
+  }
   .diagtopb {
-    font-size: 2em; } }
+    font-size: 2em;
+  }
+}

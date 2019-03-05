@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Parallax } from 'react-parallax';
-
+import Topbar from '../../components/Topbar';
 import 'animate.css/animate.min.css';
 
 import './FAQ.css';
@@ -15,9 +15,10 @@ export default class Home extends Component {
     const image =
       'https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?auto=format&fit=cro' +
       'p&w=1950&q=80';
-
+    const currentPath = this.props.location.pathname;
     return (
       <div className="outer">
+        <Topbar currentPath={currentPath} />
         <Parallax
           bgImage={image}
           blur={{

@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import Topbar from './Topbar';
 import gql from 'graphql-tag';
+import SimpleModalWrapped from '../components/SimpleModalWrapped';
 import jwt from 'jsonwebtoken';
 
 const numeral = require('numeral');
@@ -34,11 +35,12 @@ const styles = theme => ({
     //background: `url(${backgroundShape}) no-repeat`,
     backgroundSize: 'cover',
     backgroundPosition: '0 400px',
-    paddingBottom: 200
+    paddingBottom: 200,
+    marginTop: '100px'
   },
   fab: {
     // margin: theme.spacing.unit,
-    position: 'absolute',
+    position: 'fixed',
     bottom: 15,
     right: 15
   },
@@ -128,7 +130,6 @@ const PARENT_QUERY = gql`
     getParent(email: $email) {
       firstName
       lastName
-      fullName
       email
       phone
     }
@@ -144,7 +145,8 @@ const PARENT_QUERY = gql`
 class Dashboard extends Component {
   state = {
     loading: false,
-    data: []
+    data: [],
+    email: ''
   };
 
   componentDidMount() {
@@ -180,12 +182,11 @@ class Dashboard extends Component {
           email: this.state.email
         }}>
         {({ loading, error, data }) => {
-          console.log({ error });
-          console.log({ data });
           if (loading) {
             return <div />;
           }
           if (error) {
+            console.log(error);
             return <div>Error!</div>;
           }
           return (
@@ -226,6 +227,10 @@ class Dashboard extends Component {
                       <Loading loading={loading} />
                       <ParentChildTable data={[data.getParentStudents]} />
                     </Grid>
+                    <SimpleModalWrapped
+                      email={this.state.email}
+                      parent={data.getParent}
+                    />
                   </Grid>
                 </Grid>
               </div>

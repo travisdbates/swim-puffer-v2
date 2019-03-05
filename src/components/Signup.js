@@ -252,12 +252,7 @@ class Signup extends Component {
     let times = this.timeSelectFields();
     let flag = false;
     times.map(time => {
-      console.log(
-        time.split('_').join('Time'),
-        this.state[time.split('_').join('Time')]
-      );
       if (!this.state[time.split('_').join('Time')]) {
-        console.log('In here');
         flag = true;
       }
     });
@@ -286,7 +281,6 @@ class Signup extends Component {
   };
 
   handleChange = event => {
-    console.log(event.target.name, event.target.value);
     this.setState({ [event.target.name]: event.target.value });
   };
 
@@ -669,7 +663,6 @@ class Signup extends Component {
                                   let stateNotes = time
                                     .split('_')
                                     .join('Notes');
-                                  console.log('State Notes', stateNotes);
                                   return (
                                     <div
                                       style={{

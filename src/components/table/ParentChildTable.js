@@ -22,7 +22,6 @@ const styles = theme => ({
 
 function ParentChildTable(props) {
   const { classes, data } = props;
-  console.log('data: ', data[0]);
   if (!data[0].length > 0) {
     return (
       <Paper className={classes.root}>
@@ -46,7 +45,7 @@ function ParentChildTable(props) {
         </TableHead>
         <TableBody>
           {data[0].map(row => (
-            <TableRow hover key={row.id}>
+            <TableRow hover key={row.firstName + row.sessionPreference}>
               <TableCell component="th" scope="row">
                 {row.firstName}
               </TableCell>
