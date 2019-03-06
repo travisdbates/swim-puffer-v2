@@ -228,8 +228,8 @@ export default class Home extends Component {
                 <div className="verticalDividerS" />
                 <div className="dates">
                   <span className="sessDesc" />
-                  <span style={{ fontSize: '.65em', color: 'lightgrey' }}>
-                    {index <= 1 && 'Includes $5 heating fee'}
+                  <span style={{ fontSize: '.65em', color: 'grey' }}>
+                    {index <= 2 && 'Includes $5 heating fee'}
                   </span>
                 </div>
               </div>
