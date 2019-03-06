@@ -147,6 +147,7 @@ class SimpleModal extends React.Component {
                         variables: { firstName, lastName, phone, email }
                       });
                       this.handleClose();
+                      window.location.reload();
                     } catch (err) {
                       console.log(err);
                     }

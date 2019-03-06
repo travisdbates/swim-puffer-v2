@@ -3,7 +3,7 @@
 [context.production.environment]
   NODE_ENV = "production"
 
-[context.branch-deploy.environment]
+[context.branch.environment]
   NODE_ENV = "development"
 
 # Specific branch context: all deploys from this specific branch will inherit
