@@ -63,35 +63,35 @@ export default class Home extends Component {
         dates: 'April 2 - April 18',
         length: '9 Lessons',
         days: 'T | W | Th',
-        cost: '$85'
+        cost: '$90'
       },
       {
         name: 'Session 2',
         dates: 'April 22 - May 2',
         length: '8 Lessons',
         days: 'M | T | W | Th',
-        cost: '$80'
+        cost: '$85'
       },
       {
         name: 'Session 3',
         dates: 'May 14 - May 30',
         length: '9 Lessons',
         days: 'T | W | Th',
-        cost: '$85'
+        cost: '$90'
       },
       {
         name: 'Session 4',
         dates: 'June 4 - June 27',
         length: '12 Lessons',
         days: 'T | W | Th',
-        cost: '$110'
+        cost: '$115'
       },
       {
         name: 'Session 5',
         dates: 'July 9 - July 25',
         length: '9 Lessons',
         days: 'T | W | Th',
-        cost: '$80'
+        cost: '$85'
       },
       {
         name: 'Session 6',

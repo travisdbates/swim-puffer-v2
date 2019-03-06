@@ -97,11 +97,11 @@ class SimpleModal extends React.Component {
                 </Typography>
                 <Typography
                   style={{ marginTop: '15px' }}
-                  variant="h7"
+                  variant="body1"
                   id="modal-title">
                   <TextField label="Email" value={email} disabled />
                 </Typography>
-                <Typography variant="h7" id="modal-title">
+                <Typography variant="body1" id="modal-title">
                   <TextField
                     label="First Name"
                     value={firstName}
@@ -113,7 +113,7 @@ class SimpleModal extends React.Component {
                     }}
                   />
                 </Typography>
-                <Typography variant="h7" id="modal-title">
+                <Typography variant="body1" id="modal-title">
                   <TextField
                     label="Last Name"
                     value={lastName}
@@ -125,7 +125,7 @@ class SimpleModal extends React.Component {
                     }}
                   />
                 </Typography>
-                <Typography variant="h7" id="modal-title">
+                <Typography variant="body1" id="modal-title">
                   <TextField
                     label="Phone"
                     value={phone}

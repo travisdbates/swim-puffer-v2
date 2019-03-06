@@ -494,7 +494,7 @@ class Signup extends Component {
                                         value="session_1"
                                       />
                                     }
-                                    label="Session 1"
+                                    label="Session 1 - 4/2-4/18 - $90"
                                   />
                                   <FormControlLabel
                                     control={
@@ -506,7 +506,7 @@ class Signup extends Component {
                                         value="session_2"
                                       />
                                     }
-                                    label="Session 2"
+                                    label="Session 2 - 4/22-5/2 - $85"
                                   />
                                   <FormControlLabel
                                     control={
@@ -518,7 +518,7 @@ class Signup extends Component {
                                         value="session_3"
                                       />
                                     }
-                                    label="Session 3"
+                                    label="Session 3 - 5/14-5/30 - $90"
                                   />
                                   <FormControlLabel
                                     control={
@@ -530,7 +530,7 @@ class Signup extends Component {
                                         value="session_4"
                                       />
                                     }
-                                    label="Session 4"
+                                    label="Session 4 - 6/4-6/27 - $115"
                                   />
                                   <FormControlLabel
                                     control={
@@ -542,9 +542,10 @@ class Signup extends Component {
                                         value="session_5"
                                       />
                                     }
-                                    label="Session 5"
+                                    label="Session 5 - 7/9-7/25 - $85"
                                   />
                                   <FormControlLabel
+                                    disabled
                                     control={
                                       <Checkbox
                                         checked={session_6}
@@ -554,7 +555,7 @@ class Signup extends Component {
                                         value="session_6"
                                       />
                                     }
-                                    label="Session 6"
+                                    label="Session 6 - TBD"
                                   />
                                 </FormGroup>
                               </Grid>
