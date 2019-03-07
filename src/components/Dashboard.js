@@ -24,6 +24,8 @@ import jwt from 'jsonwebtoken';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import * as Sentry from '@sentry/browser';
 import client from '../utils/apollo-client';
+import Auth from '../utils/auth';
+const auth = new Auth();
 
 const numeral = require('numeral');
 numeral.defaultFormat('0,000');
@@ -153,6 +155,10 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
+    if (!localStorage.getItem('isLoggedIn')) {
+      auth.login();
+    }
+
     let email = jwt.decode(localStorage.getItem('idToken')).email;
     this.setState({
       email

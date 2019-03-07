@@ -31,6 +31,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
 import jwt from 'jsonwebtoken';
+import Auth from '../utils/auth';
+const auth = new Auth();
 
 const backgroundShape = require('../images/shape.svg');
 
@@ -165,6 +167,10 @@ class Signup extends Component {
   };
 
   componentDidMount() {
+    if (!localStorage.getItem('isLoggedIn')) {
+      auth.login();
+    }
+
     let email = jwt.decode(localStorage.getItem('idToken')).email;
     this.setState({
       email
