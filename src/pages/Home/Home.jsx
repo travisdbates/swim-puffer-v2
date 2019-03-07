@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Parallax } from 'react-parallax';
 
 import Nav from '../nav/Nav';
+import Topbar from '../../components/Topbar';
 import './Home.css';
 import 'animate.css/animate.min.css';
 
@@ -25,7 +26,7 @@ export default class Home extends Component {
           '"  My motto is: Love what you do, Do what you love!',
         para2:
           'I have a degree in child development and raised 5 wonderful children. I am now e' +
-          'njoying watching my 8 grandchildren grow up and learn to swim!'
+          'njoying watching my 10 grandchildren grow up and learn to swim!'
       },
       {
         name: 'Tarryn',
@@ -62,28 +63,28 @@ export default class Home extends Component {
         dates: 'April 2 - April 18',
         length: '9 Lessons',
         days: 'T | W | Th',
-        cost: '$85'
+        cost: '$90'
       },
       {
         name: 'Session 2',
         dates: 'April 22 - May 2',
         length: '8 Lessons',
         days: 'M | T | W | Th',
-        cost: '$80'
+        cost: '$85'
       },
       {
         name: 'Session 3',
         dates: 'May 14 - May 30',
         length: '9 Lessons',
         days: 'T | W | Th',
-        cost: '$85'
+        cost: '$90'
       },
       {
         name: 'Session 4',
         dates: 'June 4 - June 27',
         length: '12 Lessons',
         days: 'T | W | Th',
-        cost: '$110'
+        cost: '$115'
       },
       {
         name: 'Session 5',
@@ -105,9 +106,11 @@ export default class Home extends Component {
       'https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?auto=format&fit=cro' +
       'p&w=1950&q=80';
 
+    const currentPath = this.props.location.pathname;
     return (
       <div className="outer">
-        <Nav />
+        <Topbar currentPath={currentPath} />
+        {/* <Nav /> */}
         <Parallax
           bgImage={image}
           blur={{
@@ -225,8 +228,8 @@ export default class Home extends Component {
                 <div className="verticalDividerS" />
                 <div className="dates">
                   <span className="sessDesc" />
-                  <span style={{ fontSize: '.65em', color: 'lightgrey' }}>
-                    {index <= 1 && 'Includes $5 heating fee'}
+                  <span style={{ fontSize: '.65em', color: 'grey' }}>
+                    {index <= 2 && 'Includes $5 heating fee'}
                   </span>
                 </div>
               </div>

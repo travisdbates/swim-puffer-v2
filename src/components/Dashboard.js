@@ -19,7 +19,11 @@ import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import Topbar from './Topbar';
 import gql from 'graphql-tag';
+import SimpleModalWrapped from '../components/SimpleModalWrapped';
 import jwt from 'jsonwebtoken';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import * as Sentry from '@sentry/browser';
+import client from '../utils/apollo-client';
 
 const numeral = require('numeral');
 numeral.defaultFormat('0,000');
@@ -34,11 +38,12 @@ const styles = theme => ({
     //background: `url(${backgroundShape}) no-repeat`,
     backgroundSize: 'cover',
     backgroundPosition: '0 400px',
-    paddingBottom: 200
+    paddingBottom: 200,
+    marginTop: '100px'
   },
   fab: {
     // margin: theme.spacing.unit,
-    position: 'absolute',
+    position: 'fixed',
     bottom: 15,
     right: 15
   },
@@ -128,7 +133,6 @@ const PARENT_QUERY = gql`
     getParent(email: $email) {
       firstName
       lastName
-      fullName
       email
       phone
     }
@@ -144,7 +148,8 @@ const PARENT_QUERY = gql`
 class Dashboard extends Component {
   state = {
     loading: false,
-    data: []
+    data: [],
+    email: ''
   };
 
   componentDidMount() {
@@ -175,19 +180,46 @@ class Dashboard extends Component {
 
     return (
       <Query
+        fetchPolicy="cache-and-network"
         query={PARENT_QUERY}
         variables={{
           email: this.state.email
         }}>
         {({ loading, error, data }) => {
-          console.log({ error });
-          console.log({ data });
           if (loading) {
-            return <div />;
+            return (
+              <div
+                style={{
+                  display: 'flex',
+                  width: '100vw',
+                  height: '100vh',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}>
+                <CircularProgress
+                  style={{
+                    marginBottom: 32,
+                    width: 100,
+                    height: 100
+                  }}
+                />
+              </div>
+            );
           }
           if (error) {
-            return <div>Error!</div>;
+            console.log(error);
+            return (
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}>
+                <span>Oops... Something went wrong.</span>
+              </div>
+            );
           }
+          console.log(data);
           return (
             <React.Fragment>
               <Fab color="primary" aria-label="Add" className={classes.fab}>
@@ -226,6 +258,10 @@ class Dashboard extends Component {
                       <Loading loading={loading} />
                       <ParentChildTable data={[data.getParentStudents]} />
                     </Grid>
+                    <SimpleModalWrapped
+                      email={this.state.email}
+                      parent={data.getParent}
+                    />
                   </Grid>
                 </Grid>
               </div>

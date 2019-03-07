@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Nav from '../nav/Nav';
 import { Parallax } from 'react-parallax';
-
+import Topbar from '../../components/Topbar';
 import 'animate.css/animate.min.css';
 
 import './FAQ.css';
@@ -15,10 +15,10 @@ export default class Home extends Component {
     const image =
       'https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?auto=format&fit=cro' +
       'p&w=1950&q=80';
-
+    const currentPath = this.props.location.pathname;
     return (
       <div className="outer">
-        <Nav />
+        <Topbar currentPath={currentPath} />
         <Parallax
           bgImage={image}
           blur={{
@@ -113,7 +113,7 @@ export default class Home extends Component {
             <Collapsible trigger="How do I pay for classes?">
               <cp>
                 You may bring money on the first day of class. We will provide
-                envelopes.
+                envelopes. There will also be an option for Venmo payments.
               </cp>
             </Collapsible>
             <Collapsible trigger="​Can my child wear a rashguard in the pool?">

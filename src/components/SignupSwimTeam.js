@@ -71,7 +71,7 @@ const styles = theme => ({
     alignItems: 'center'
   },
   stepGrid: {
-    // width: '80%'
+    width: '80%'
   },
   buttonBar: {
     marginTop: 32,
@@ -89,8 +89,7 @@ const styles = theme => ({
     margin: theme.spacing.unit
   },
   stepper: {
-    backgroundColor: 'transparent',
-    width: '100vw'
+    backgroundColor: 'transparent'
   },
   paper: {
     padding: theme.spacing.unit * 3,
@@ -136,7 +135,7 @@ const SUBMIT_SIGNUP = gql`
   }
 `;
 
-class Signup extends Component {
+class SignupSwimTeam extends Component {
   state = {
     email: '',
     activeStep: 0,
@@ -543,7 +542,7 @@ class Signup extends Component {
                                         value="session_5"
                                       />
                                     }
-                                    label="Session 5 - 7/9-7/25 - $80"
+                                    label="Session 5 - 7/9-7/25 - $85"
                                   />
                                   <FormControlLabel
                                     disabled
@@ -842,4 +841,4 @@ class Signup extends Component {
   }
 }
 
-export default withRouter(withStyles(styles)(Signup));
+export default withRouter(withStyles(styles)(SignupSwimTeam));
