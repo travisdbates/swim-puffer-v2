@@ -8,7 +8,8 @@ export default class Auth {
     redirectUri: auth.redirectUri,
     responseType: 'token id_token',
     scope: 'openid email',
-    state: auth.clientID
+    state: auth.clientID,
+    nonce: auth.clientID
   });
 
   constructor() {
