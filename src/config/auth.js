@@ -8,7 +8,7 @@ module.exports = {
         : process.env.NODE_ENV === 'staging'
         ? 'https://staging.swimpufferfish.com/callback'
         : process.env.NODE_ENV === 'production'
-        ? 'https://staging.swimpufferfish.com/callback'
+        ? 'https://swimpufferfish.com/callback'
         : process.env.REACT_APP_AUTH0_REDIRECT,
     responseType: 'token id_token',
     scope: 'openid'
