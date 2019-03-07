@@ -219,7 +219,7 @@ class Dashboard extends Component {
               </div>
             );
           }
-
+          console.log(data);
           return (
             <React.Fragment>
               <Fab color="primary" aria-label="Add" className={classes.fab}>

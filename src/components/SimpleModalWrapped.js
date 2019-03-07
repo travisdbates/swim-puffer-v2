@@ -58,7 +58,11 @@ class SimpleModal extends React.Component {
   };
 
   componentDidMount() {
-    const { firstName, lastName, phone } = this.props.parent;
+    if (!this.props.parent) {
+      this.setState({ open: true });
+      return;
+    }
+    const { firstName = '', lastName = '', phone = '' } = this.props.parent;
     if (!this.props.parent || !firstName || !lastName || !phone) {
       this.setState({ open: true, firstName, lastName, phone });
     }
