@@ -38,6 +38,7 @@ const styles = theme => ({
   },
   flex: {
     display: 'flex',
+    alignItems: 'center',
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
       justifyContent: 'space-evenly',
@@ -48,7 +49,8 @@ const styles = theme => ({
     textDecoration: 'none',
     color: 'inherit',
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   productLogo: {
     display: 'inline-block',
@@ -177,7 +179,8 @@ class Topbar extends Component {
 
                         {localStorage.getItem('isLoggedIn') ? (
                           <ListItem
-                            component={Button}
+                            component={Link}
+                            to=""
                             button
                             onClick={() => auth.logout()}>
                             <ListItemText
@@ -187,7 +190,9 @@ class Topbar extends Component {
                           </ListItem>
                         ) : (
                           <ListItem
-                            component={Button}
+                            component={Link}
+                            to=""
+                            button
                             onClick={() => auth.login()}>
                             <ListItemText
                               style={{ textTransform: 'none' }}
@@ -239,15 +244,17 @@ class Topbar extends Component {
                       })}
                       {localStorage.getItem('isLoggedIn') ? (
                         <Tab
-                          component={Button}
-                          classes={classes.tabItem}
+                          component={Link}
+                          to=""
+                          classes={{ root: classes.tabItem }}
                           label={'Logout'}
                           onClick={() => auth.logout()}
                         />
                       ) : (
                         <Tab
-                          component={Button}
-                          classes={classes.tabItem}
+                          component={Link}
+                          to=""
+                          classes={{ root: classes.tabItem }}
                           label={'Login/Signup'}
                           onClick={() => auth.login()}
                         />

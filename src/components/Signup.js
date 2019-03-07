@@ -71,7 +71,7 @@ const styles = theme => ({
     alignItems: 'center'
   },
   stepGrid: {
-    width: '80%'
+    // width: '80%'
   },
   buttonBar: {
     marginTop: 32,
@@ -89,7 +89,8 @@ const styles = theme => ({
     margin: theme.spacing.unit
   },
   stepper: {
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    width: '100vw'
   },
   paper: {
     padding: theme.spacing.unit * 3,
@@ -542,7 +543,7 @@ class Signup extends Component {
                                         value="session_5"
                                       />
                                     }
-                                    label="Session 5 - 7/9-7/25 - $85"
+                                    label="Session 5 - 7/9-7/25 - $80"
                                   />
                                   <FormControlLabel
                                     disabled

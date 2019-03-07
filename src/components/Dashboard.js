@@ -21,6 +21,9 @@ import Topbar from './Topbar';
 import gql from 'graphql-tag';
 import SimpleModalWrapped from '../components/SimpleModalWrapped';
 import jwt from 'jsonwebtoken';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import * as Sentry from '@sentry/browser';
+import client from '../utils/apollo-client';
 
 const numeral = require('numeral');
 numeral.defaultFormat('0,000');
@@ -177,18 +180,46 @@ class Dashboard extends Component {
 
     return (
       <Query
+        fetchPolicy="cache-and-network"
         query={PARENT_QUERY}
         variables={{
           email: this.state.email
         }}>
         {({ loading, error, data }) => {
           if (loading) {
-            return <div />;
+            return (
+              <div
+                style={{
+                  display: 'flex',
+                  width: '100vw',
+                  height: '100vh',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}>
+                <CircularProgress
+                  style={{
+                    marginBottom: 32,
+                    width: 100,
+                    height: 100
+                  }}
+                />
+              </div>
+            );
           }
           if (error) {
             console.log(error);
-            return <div>Error!</div>;
+            return (
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}>
+                <span>Oops... Something went wrong.</span>
+              </div>
+            );
           }
+
           return (
             <React.Fragment>
               <Fab color="primary" aria-label="Add" className={classes.fab}>

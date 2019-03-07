@@ -58,8 +58,9 @@ class SimpleModal extends React.Component {
   };
 
   componentDidMount() {
-    if (!this.props.parent) {
-      this.setState({ open: true });
+    const { firstName, lastName, phone } = this.props.parent;
+    if (!this.props.parent || !firstName || !lastName || !phone) {
+      this.setState({ open: true, firstName, lastName, phone });
     }
   }
 
@@ -138,6 +139,7 @@ class SimpleModal extends React.Component {
                   />
                 </Typography>
                 <Button
+                  disabled={!firstName || !lastName || !phone}
                   style={{ marginTop: '15px' }}
                   variant="contained"
                   color="primary"
@@ -146,8 +148,8 @@ class SimpleModal extends React.Component {
                       await updateParent({
                         variables: { firstName, lastName, phone, email }
                       });
-                      this.handleClose();
                       window.location.reload();
+                      this.handleClose();
                     } catch (err) {
                       console.log(err);
                     }

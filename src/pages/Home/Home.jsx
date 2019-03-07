@@ -26,7 +26,7 @@ export default class Home extends Component {
           '"  My motto is: Love what you do, Do what you love!',
         para2:
           'I have a degree in child development and raised 5 wonderful children. I am now e' +
-          'njoying watching my 8 grandchildren grow up and learn to swim!'
+          'njoying watching my 10 grandchildren grow up and learn to swim!'
       },
       {
         name: 'Tarryn',
@@ -91,7 +91,7 @@ export default class Home extends Component {
         dates: 'July 9 - July 25',
         length: '9 Lessons',
         days: 'T | W | Th',
-        cost: '$85'
+        cost: '$80'
       },
       {
         name: 'Session 6',

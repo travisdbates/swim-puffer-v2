@@ -17,6 +17,15 @@ const styles = theme => ({
   },
   table: {
     minWidth: 700
+  },
+  rootEmpty: {
+    width: '100%',
+    height: '250px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    textAlign: 'center'
   }
 });
 
@@ -24,10 +33,20 @@ function ParentChildTable(props) {
   const { classes, data } = props;
   if (!data[0].length > 0) {
     return (
-      <Paper className={classes.root}>
-        <Table className={classes.table}>
-          Oops! No kiddos have been signed up yet!
-        </Table>
+      <Paper className={classes.rootEmpty}>
+        <span
+          role="img"
+          aria-label="emoji"
+          style={{
+            fontSize: 58,
+            textAlign: 'center',
+            display: 'inline-block',
+            width: '100%'
+          }}>
+          🙈
+        </span>
+        <span>Oops! No kiddos have been signed up yet!</span>
+        <span>Click the + button below, or click "Signup" above!</span>
       </Paper>
     );
   }
