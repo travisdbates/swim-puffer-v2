@@ -29,9 +29,8 @@ export default class Auth {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
       } else if (err) {
-        window.location.replace('/dash');
         console.log(err);
-        alert(`Error: ${err.error}. Check the console for further details.`);
+        window.location.replace('/');
       }
     });
   }
