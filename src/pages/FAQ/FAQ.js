@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Nav from '../nav/Nav';
 import { Parallax } from 'react-parallax';
 import Topbar from '../../components/Topbar';
 import 'animate.css/animate.min.css';
