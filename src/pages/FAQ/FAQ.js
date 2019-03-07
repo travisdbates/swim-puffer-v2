@@ -113,7 +113,7 @@ export default class Home extends Component {
             <Collapsible trigger="How do I pay for classes?">
               <cp>
                 You may bring money on the first day of class. We will provide
-                envelopes.
+                envelopes. There will also be an option for Venmo payments.
               </cp>
             </Collapsible>
             <Collapsible trigger="​Can my child wear a rashguard in the pool?">
