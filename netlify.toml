@@ -1,12 +1,12 @@
-# Production context: all deploys from the Production branch set in your site's 
-# deploy contexts will inherit these settings.
-[context.production.environment]
-  NODE_ENV = "production"
+# # Production context: all deploys from the Production branch set in your site's 
+# # deploy contexts will inherit these settings.
+# [context.production.environment]
+#   NODE_ENV = "production"
 
-[context.branch.environment]
-  NODE_ENV = "development"
+# [context.branch.environment]
+#   NODE_ENV = "development"
 
-# Specific branch context: all deploys from this specific branch will inherit
-# these settings.
-[context.staging.environment] # 'staging' is a branch name
-  NODE_ENV = "staging"
+# # Specific branch context: all deploys from this specific branch will inherit
+# # these settings.
+# [context.staging.environment] # 'staging' is a branch name
+#   NODE_ENV = "staging"
