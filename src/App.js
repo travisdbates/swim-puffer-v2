@@ -21,6 +21,8 @@ const theme = createMuiTheme({
   }
 });
 
+//dashboard?
+
 class App extends Component {
   componentDidMount() {
     Sentry.init({
