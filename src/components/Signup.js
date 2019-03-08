@@ -124,6 +124,7 @@ const SUBMIT_SIGNUP = gql`
     $sessionPreference: [Boolean]!
     $timePreference: [Int]!
     $notes: [String]
+    $age: Int
   ) {
     studentSignUp(
       email: $email
@@ -131,6 +132,7 @@ const SUBMIT_SIGNUP = gql`
       sessionPreference: $sessionPreference
       timePreference: $timePreference
       notes: $notes
+      age: $age
     ) {
       status
       message
@@ -353,7 +355,8 @@ class Signup extends Component {
       sessionNotes4,
       sessionNotes5,
       sessionNotes6,
-      firstName
+      firstName,
+      age
     } = this.state;
 
     return (
@@ -790,7 +793,8 @@ class Signup extends Component {
                                         sessionNotes4,
                                         sessionNotes5,
                                         sessionNotes6
-                                      ]
+                                      ],
+                                      age
                                     }
                                   });
                                   this.setState(state => ({
