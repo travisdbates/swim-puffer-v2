@@ -103,15 +103,6 @@ class ParentChildTable extends Component {
               <TableBody>
                 {data[0]
                   .sort((a, b) => {
-                    // console.log(
-                    //   'A',
-                    //   a.created_at,
-                    //   new Date(a.created_at),
-                    //   'B',
-                    //   new Date(b.created_at)
-                    // );
-                    console.log(new Date(a.age));
-
                     return (
                       new Date(a.sessionPreference) -
                       new Date(b.sessionPreference)
