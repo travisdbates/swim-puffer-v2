@@ -22,8 +22,6 @@ import gql from 'graphql-tag';
 import SimpleModalWrapped from '../components/SimpleModalWrapped';
 import jwt from 'jsonwebtoken';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import * as Sentry from '@sentry/browser';
-import client from '../utils/apollo-client';
 import Auth from '../utils/auth';
 const auth = new Auth();
 
@@ -144,6 +142,9 @@ const PARENT_QUERY = gql`
       timePreference
       sessionAssigned
       timeAssigned
+      age
+      created_at
+      id
     }
   }
 `;
@@ -262,7 +263,10 @@ class Dashboard extends Component {
 
                     <Grid container spacing={24} xs={12} justify="left">
                       <Loading loading={loading} />
-                      <ParentChildTable data={[data.getParentStudents]} />
+                      <ParentChildTable
+                        data={[data.getParentStudents]}
+                        email={this.state.email}
+                      />
                     </Grid>
                     <SimpleModalWrapped
                       email={this.state.email}
