@@ -187,7 +187,7 @@ class Dashboard extends Component {
 
     return (
       <Query
-        fetchPolicy="cache-and-network"
+        fetchPolicy="network-only"
         query={PARENT_QUERY}
         variables={{
           email: this.state.email
