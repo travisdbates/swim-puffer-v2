@@ -116,9 +116,9 @@ class ParentChildTable extends Component {
                       <TableCell component="th" scope="row">
                         <Select
                           value={row.age}
-                          onChange={e => {
+                          onChange={async e => {
                             e.preventDefault();
-                            updateStudent({
+                            await updateStudent({
                               variables: {
                                 email: this.props.email,
                                 firstName: row.firstName,
