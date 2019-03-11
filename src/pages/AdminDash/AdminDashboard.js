@@ -280,20 +280,11 @@ class AdminDashboard extends Component {
                           <Typography variant="h6" gutterBottom>
                             Admin Dashboard
                           </Typography>
-                          <Typography variant="body1">
-                            Adjust and play with our sliders.
-                          </Typography>
-                        </div>
-                        <div>
-                          <Button
-                            variant="outlined"
-                            className={classes.outlinedButtom}>
-                            Get help
-                          </Button>
+                          <Typography variant="body1" />
                         </div>
                       </div>
                     </Grid>
-                    <Grid item xs={12} md={4}>
+                    {/* <Grid item xs={12} md={4}>
                       <Paper className={classes.paper}>
                         <div>
                           <Typography variant="subtitle1" gutterBottom>
@@ -415,7 +406,7 @@ class AdminDashboard extends Component {
                           </div>
                         </div>
                       </Paper>
-                    </Grid>
+                    </Grid> */}
                     <Grid container spacing={24} justify="center">
                       <Grid item xl={12} md={12}>
                         <Paper
