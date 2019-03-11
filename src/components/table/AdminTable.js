@@ -124,7 +124,6 @@ class AdminTable extends Component {
               </div>
             );
           }
-          console.log(data);
 
           if (!data.getAllStudents.length > 0) {
             return (
