@@ -7,6 +7,7 @@ import ScrollToTop from './components/ScrollTop';
 import Home from './pages/Home/Home';
 import FAQ from './pages/FAQ/FAQ';
 import Callback from './pages/Callback/Callback';
+import AdminDashboard from './pages/AdminDash/AdminDashboard';
 import Auth from './utils/auth';
 import SignupSwimTeam from './components/SignupSwimTeam';
 const auth = new Auth();
@@ -34,6 +35,7 @@ export default props => (
         <Route exact path="/dash" component={Dashboard} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/signupswimteam" component={SignupSwimTeam} />
+        <Route exact path="/admin" component={AdminDashboard} />
       </Switch>
     </ScrollToTop>
   </BrowserRouter>

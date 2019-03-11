@@ -140,8 +140,8 @@ const PARENT_QUERY = gql`
       firstName
       sessionPreference
       timePreference
-      sessionAssigned
-      timeAssigned
+      # sessionAssigned
+      # timeAssigned
       age
       created_at
       id

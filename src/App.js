@@ -23,9 +23,9 @@ const theme = createMuiTheme({
 
 class App extends Component {
   componentDidMount() {
-    Sentry.init({
-      dsn: 'https://1c58da41d341482c8c60e6cac825868c@sentry.io/1408857'
-    });
+    // Sentry.init({
+    //   dsn: 'https://1c58da41d341482c8c60e6cac825868c@sentry.io/1408857'
+    // });
   }
 
   render() {
