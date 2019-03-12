@@ -15,6 +15,8 @@ import gql from 'graphql-tag';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Query, Mutation } from 'react-apollo';
 import { times } from './sessionTimesHelper';
+import ReactTooltip from 'react-tooltip';
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -74,6 +76,7 @@ const PARENT_QUERY = gql`
       sessionPreference
       timePreference
       sideAssigned
+      notes
       email
       age
       id
@@ -180,8 +183,20 @@ class AdminTable extends Component {
                             <TableCell align="right">
                               {row.sessionPreference}
                             </TableCell>
-                            <TableCell align="right">
-                              {timeHelper(row.timePreference)}
+                            <TableCell
+                              style={
+                                row.notes
+                                  ? { color: '#54B3B0', cursor: 'pointer' }
+                                  : null
+                              }
+                              align="right">
+                              {row.notes ? (
+                                <p data-delay-show="100" data-tip={row.notes}>
+                                  {timeHelper(row.timePreference)}
+                                </p>
+                              ) : (
+                                timeHelper(row.timePreference)
+                              )}
                               {/* {row.timePreference} */}
                             </TableCell>
                             <TableCell align="right">
@@ -279,6 +294,7 @@ class AdminTable extends Component {
                             </TableCell>
                           </TableRow>
                         ))}
+                      <ReactTooltip />
                     </TableBody>
                   </Table>
                 </Paper>
