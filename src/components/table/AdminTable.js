@@ -175,7 +175,9 @@ class AdminTable extends Component {
                         .map(row => (
                           <TableRow hover key={row.id}>
                             <TableCell component="th" scope="row">
-                              {row.firstName}
+                              <p data-delay-show="100" data-tip={row.email}>
+                                {row.firstName}
+                              </p>
                             </TableCell>
                             <TableCell component="th" scope="row">
                               {row.age}
@@ -294,7 +296,7 @@ class AdminTable extends Component {
                             </TableCell>
                           </TableRow>
                         ))}
-                      <ReactTooltip />
+                      <ReactTooltip clickable={true} />
                     </TableBody>
                   </Table>
                 </Paper>
