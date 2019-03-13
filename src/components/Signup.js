@@ -495,6 +495,7 @@ class Signup extends Component {
 
                                 <FormGroup>
                                   <FormControlLabel
+                                    disabled
                                     control={
                                       <Checkbox
                                         checked={session_1}
@@ -504,9 +505,10 @@ class Signup extends Component {
                                         value="session_1"
                                       />
                                     }
-                                    label="Session 1 - 4/2-4/18 - $90"
+                                    label="Session 1 - Full"
                                   />
                                   <FormControlLabel
+                                    disabled
                                     control={
                                       <Checkbox
                                         checked={session_2}
@@ -516,7 +518,7 @@ class Signup extends Component {
                                         value="session_2"
                                       />
                                     }
-                                    label="Session 2 - 4/22-5/2 - $85"
+                                    label="Session 2 - Full"
                                   />
                                   <FormControlLabel
                                     control={
