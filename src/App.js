@@ -5,6 +5,7 @@ import Routes from './routes';
 import { ApolloProvider } from 'react-apollo';
 import client from './utils/apollo-client';
 import * as Sentry from '@sentry/browser';
+import { SnackbarProvider } from 'notistack';
 
 const theme = createMuiTheme({
   palette: {
@@ -33,7 +34,9 @@ class App extends Component {
       <div>
         <ApolloProvider client={client}>
           <MuiThemeProvider theme={theme}>
-            <Routes />
+            <SnackbarProvider maxSnack={5}>
+              <Routes />
+            </SnackbarProvider>
           </MuiThemeProvider>
         </ApolloProvider>
       </div>

@@ -16,6 +16,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { Query, Mutation } from 'react-apollo';
 import { times } from './sessionTimesHelper';
 import ReactTooltip from 'react-tooltip';
+import Icon from '@material-ui/core/Icon';
+import Button from '@material-ui/core/Button';
+import { withSnackbar } from 'notistack';
 
 const styles = theme => ({
   root: {
@@ -47,6 +50,7 @@ const UPDATE_STUDENT = gql`
     $sessionAssigned: Int
     $timeAssigned: Int
     $sideAssigned: String
+    $emailSent: Boolean
   ) {
     studentUpdate(
       id: $id
@@ -57,6 +61,7 @@ const UPDATE_STUDENT = gql`
       timeAssigned: $timeAssigned
       sessionAssigned: $sessionAssigned
       sideAssigned: $sideAssigned
+      emailSent: $emailSent
     ) {
       firstName
       timeAssigned
@@ -66,6 +71,7 @@ const UPDATE_STUDENT = gql`
       sideAssigned
       notes
       email
+      emailSent
       age
       id
       __typename
@@ -84,6 +90,7 @@ const PARENT_QUERY = gql`
       sideAssigned
       notes
       email
+      emailSent
       age
       id
       __typename
@@ -168,6 +175,7 @@ class AdminTable extends Component {
                         <TableCell align="right">Session Assigned</TableCell>
                         <TableCell align="right">Time Assigned</TableCell>
                         <TableCell align="right">Side Assigned</TableCell>
+                        <TableCell align="right">Email</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -316,6 +324,107 @@ class AdminTable extends Component {
                                 <MenuItem value={'S'}>S</MenuItem>
                               </Select>
                             </TableCell>
+                            <TableCell align="right">
+                              <Icon
+                                style={{
+                                  color: row.emailSent ? '#54B3B0' : 'grey',
+                                  cursor: 'pointer'
+                                }}
+                                onClick={async () => {
+                                  if (
+                                    !row.sessionAssigned ||
+                                    !row.timeAssigned
+                                  ) {
+                                    this.props.enqueueSnackbar(
+                                      'Please fill out all fields!',
+                                      {
+                                        variant: 'error',
+                                        autoHideDuration: 3500
+                                      }
+                                    );
+                                    return;
+                                  }
+                                  if (row.emailSent) {
+                                    this.props.enqueueSnackbar(
+                                      'Are you sure you want to send an email again?',
+                                      {
+                                        variant: 'warning',
+                                        autoHideDuration: 7000,
+                                        action: (
+                                          <Button
+                                            onClick={async () => {
+                                              this.props.enqueueSnackbar(
+                                                'Email sent!',
+                                                {
+                                                  variant: 'success',
+                                                  autoHideDuration: 3500
+                                                }
+                                              );
+                                              try {
+                                                await updateStudent({
+                                                  variables: {
+                                                    firstName: row.firstName,
+                                                    email: row.email,
+                                                    emailSent: true,
+                                                    id: row.id,
+                                                    __typename: row.__typename,
+                                                    sessionPreference: parseInt(
+                                                      row.sessionPreference,
+                                                      10
+                                                    )
+                                                  }
+                                                });
+                                              } catch (err) {
+                                                this.props.enqueueSnackbar(
+                                                  "Something didn't work quite right with that email. :(",
+                                                  {
+                                                    variant: 'error',
+                                                    autoHideDuration: 3500
+                                                  }
+                                                );
+                                                return;
+                                              }
+                                            }}
+                                            size="small">
+                                            {'Yes'}
+                                          </Button>
+                                        )
+                                      }
+                                    );
+                                    return;
+                                  }
+                                  this.props.enqueueSnackbar('Email sent!', {
+                                    variant: 'success',
+                                    autoHideDuration: 3500
+                                  });
+                                  try {
+                                    await updateStudent({
+                                      variables: {
+                                        firstName: row.firstName,
+                                        email: row.email,
+                                        emailSent: true,
+                                        id: row.id,
+                                        __typename: row.__typename,
+                                        sessionPreference: parseInt(
+                                          row.sessionPreference,
+                                          10
+                                        )
+                                      }
+                                    });
+                                  } catch (err) {
+                                    this.props.enqueueSnackbar(
+                                      "Something didn't work quite right with that email. :(",
+                                      {
+                                        variant: 'error',
+                                        autoHideDuration: 3500
+                                      }
+                                    );
+                                    return;
+                                  }
+                                }}>
+                                email
+                              </Icon>
+                            </TableCell>
                           </TableRow>
                         ))}
                       <ReactTooltip clickable={true} />
@@ -335,4 +444,4 @@ AdminTable.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(AdminTable);
+export default withSnackbar(withStyles(styles)(AdminTable));
