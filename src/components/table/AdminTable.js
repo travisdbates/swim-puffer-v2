@@ -42,6 +42,7 @@ const UPDATE_STUDENT = gql`
     $id: ID!
     $email: String!
     $firstName: String!
+    $sessionPreference: Int!
     $age: Int
     $sessionAssigned: Int
     $timeAssigned: Int
@@ -51,16 +52,21 @@ const UPDATE_STUDENT = gql`
       id: $id
       email: $email
       firstName: $firstName
+      sessionPreference: $sessionPreference
       age: $age
       timeAssigned: $timeAssigned
       sessionAssigned: $sessionAssigned
       sideAssigned: $sideAssigned
     ) {
       firstName
-      age
-      sessionAssigned
       timeAssigned
+      sessionAssigned
+      sessionPreference
+      timePreference
       sideAssigned
+      notes
+      email
+      age
       id
       __typename
     }
@@ -206,10 +212,18 @@ class AdminTable extends Component {
                                 value={row.sessionAssigned}
                                 onChange={async e => {
                                   e.preventDefault();
+                                  console.log(
+                                    'row.sessionPreference',
+                                    row.sessionPreference
+                                  );
                                   await updateStudent({
                                     variables: {
                                       firstName: row.firstName,
                                       email: row.email,
+                                      sessionPreference: parseInt(
+                                        row.sessionPreference,
+                                        10
+                                      ),
                                       sessionAssigned: e.target.value,
                                       id: row.id,
                                       __typename: row.__typename
@@ -244,7 +258,11 @@ class AdminTable extends Component {
                                       email: row.email,
                                       timeAssigned: e.target.value,
                                       id: row.id,
-                                      __typename: row.__typename
+                                      __typename: row.__typename,
+                                      sessionPreference: parseInt(
+                                        row.sessionPreference,
+                                        10
+                                      )
                                     }
                                   });
                                 }}
@@ -277,7 +295,11 @@ class AdminTable extends Component {
                                       email: row.email,
                                       sideAssigned: e.target.value,
                                       id: row.id,
-                                      __typename: row.__typename
+                                      __typename: row.__typename,
+                                      sessionPreference: parseInt(
+                                        row.sessionPreference,
+                                        10
+                                      )
                                     }
                                   });
                                 }}
