@@ -13,7 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
-
+import { timesForDash } from '../table/sessionTimesHelper';
 const styles = theme => ({
   root: {
     width: '100%',
@@ -163,7 +163,7 @@ class ParentChildTable extends Component {
                         {row.emailSent ? row.sessionAssigned : 'N/A'}
                       </TableCell>
                       <TableCell align="right">
-                        {row.emailSent ? row.timeAssigned : 'N/A'}
+                        {row.emailSent ? timesForDash[row.timeAssigned] : 'N/A'}
                       </TableCell>
                     </TableRow>
                   ))}

@@ -14,7 +14,7 @@ import Select from '@material-ui/core/Select';
 import gql from 'graphql-tag';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Query, Mutation } from 'react-apollo';
-import { times } from './sessionTimesHelper';
+import { times, timesForDash } from './sessionTimesHelper';
 import ReactTooltip from 'react-tooltip';
 import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
@@ -327,7 +327,11 @@ class AdminTable extends Component {
                             <TableCell align="right">
                               <Icon
                                 style={{
-                                  color: row.emailSent ? '#54B3B0' : 'grey',
+                                  color: row.emailSent
+                                    ? '#54B3B0'
+                                    : row.email.search('@yahoo') === -1
+                                    ? 'grey'
+                                    : 'red',
                                   cursor: 'pointer'
                                 }}
                                 onClick={async () => {
@@ -344,6 +348,22 @@ class AdminTable extends Component {
                                     );
                                     return;
                                   }
+                                  if (row.email.search('@yahoo') !== -1) {
+                                    console.log('GETTING HERE');
+                                    window.location.href =
+                                      'mailto:' +
+                                      row.email +
+                                      '?subject=' +
+                                      'Swim Lessons Time Assigned' +
+                                      '&body=' +
+                                      row.firstName +
+                                      ' - Session: ' +
+                                      row.sessionAssigned +
+                                      ' Time: ' +
+                                      timesForDash[row.timeAssigned];
+
+                                    return;
+                                  }
                                   if (row.emailSent) {
                                     this.props.enqueueSnackbar(
                                       'Are you sure you want to send an email again?',
@@ -353,13 +373,27 @@ class AdminTable extends Component {
                                         action: (
                                           <Button
                                             onClick={async () => {
-                                              this.props.enqueueSnackbar(
-                                                'Email sent!',
-                                                {
-                                                  variant: 'success',
-                                                  autoHideDuration: 3500
-                                                }
-                                              );
+                                              if (
+                                                row.email.search('@yahoo') !==
+                                                -1
+                                              ) {
+                                                console.log('GETTING HERE');
+                                                window.location.href =
+                                                  'mailto:' +
+                                                  row.email +
+                                                  '?subject=' +
+                                                  'Swim Lessons Time Assigned' +
+                                                  '&body=' +
+                                                  row.firstName +
+                                                  ' - Session: ' +
+                                                  row.sessionAssigned +
+                                                  ' Time: ' +
+                                                  timesForDash[
+                                                    row.timeAssigned
+                                                  ];
+
+                                                return;
+                                              }
                                               try {
                                                 await updateStudent({
                                                   variables: {
@@ -374,6 +408,13 @@ class AdminTable extends Component {
                                                     )
                                                   }
                                                 });
+                                                this.props.enqueueSnackbar(
+                                                  'Email sent!',
+                                                  {
+                                                    variant: 'success',
+                                                    autoHideDuration: 3500
+                                                  }
+                                                );
                                               } catch (err) {
                                                 this.props.enqueueSnackbar(
                                                   "Something didn't work quite right with that email. :(",
