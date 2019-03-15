@@ -160,10 +160,10 @@ class ParentChildTable extends Component {
                         {/* {row.timePreference} */}
                       </TableCell>
                       <TableCell align="right">
-                        {row.sessionAssigned ? row.sessionAssigned : 'N/A'}
+                        {row.emailSent ? row.sessionAssigned : 'N/A'}
                       </TableCell>
                       <TableCell align="right">
-                        {row.timeAssigned ? row.timeAssigned : 'N/A'}
+                        {row.emailSent ? row.timeAssigned : 'N/A'}
                       </TableCell>
                     </TableRow>
                   ))}
