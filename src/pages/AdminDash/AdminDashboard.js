@@ -58,7 +58,7 @@ const styles = theme => ({
     paddingBottom: 200
   },
   grid: {
-    width: 1200,
+    width: 1600,
     margin: `0 ${theme.spacing.unit * 2}px`,
     [theme.breakpoints.down('sm')]: {
       width: 'calc(100% - 20px)'
