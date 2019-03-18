@@ -72,6 +72,9 @@ const UPDATE_STUDENT = gql`
       notes
       email
       emailSent
+      parentLast
+      parentFirst
+      phone
       age
       id
       __typename
@@ -90,6 +93,9 @@ const PARENT_QUERY = gql`
       sideAssigned
       notes
       email
+      parentLast
+      parentFirst
+      phone
       emailSent
       age
       id
@@ -140,6 +146,7 @@ class AdminTable extends Component {
               </div>
             );
           }
+          console.log(data);
 
           if (!data.getAllStudents.length > 0) {
             return (
@@ -170,6 +177,7 @@ class AdminTable extends Component {
                       <TableRow>
                         <TableCell>Child Name</TableCell>
                         <TableCell>Age</TableCell>
+                        <TableCell>Parent information</TableCell>
                         <TableCell align="right">Session Preference</TableCell>
                         <TableCell align="right">Time Preference</TableCell>
                         <TableCell align="right">Session Assigned</TableCell>
@@ -195,6 +203,15 @@ class AdminTable extends Component {
                             </TableCell>
                             <TableCell component="th" scope="row">
                               {row.age}
+                            </TableCell>
+                            <TableCell align="left">
+                              <strong>
+                                {row.parentFirst} {row.parentLast}
+                              </strong>
+                              <br />
+                              {row.email}
+                              <br />
+                              {row.phone}
                             </TableCell>
                             <TableCell align="right">
                               {row.sessionPreference}
