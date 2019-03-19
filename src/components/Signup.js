@@ -531,7 +531,7 @@ class Signup extends Component {
                                         value="session_3"
                                       />
                                     }
-                                    label="Session 3 - 5/14-5/30 - $90"
+                                    label="Session 3 - Full"
                                   />
                                   <FormControlLabel
                                     control={
