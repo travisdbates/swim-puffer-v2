@@ -521,6 +521,7 @@ class Signup extends Component {
                                     label="Session 2 - Full"
                                   />
                                   <FormControlLabel
+                                    disabled
                                     control={
                                       <Checkbox
                                         checked={session_3}
