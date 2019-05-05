@@ -406,14 +406,6 @@ class Signup extends Component {
                                 <Typography variant="body2" gutterBottom>
                                   Please type in your child's name and age
                                 </Typography>
-                                <Typography variant="body2" gutterBottom>
-                                  Please note: to sign up for swim team prep
-                                  lessons, please email Tarryn directly at{' '}
-                                  <a href="mailto:mccormickrt@gmail.com">
-                                    mccormickrt@gmail.com
-                                  </a>
-                                  .
-                                </Typography>
                               </div>
                               <div style={{ display: 'flex' }}>
                                 <div style={{ flex: 1, padding: '5px' }}>
