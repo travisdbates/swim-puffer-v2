@@ -186,15 +186,13 @@ class Signup extends Component {
       session_3,
       session_4,
       session_5,
-      session_6
     } = this.state;
     return (
       !session_1 &&
       !session_2 &&
       !session_3 &&
       !session_4 &&
-      !session_5 &&
-      !session_6
+      !session_5
     );
   };
 
@@ -205,15 +203,13 @@ class Signup extends Component {
       sessionTime3,
       sessionTime4,
       sessionTime5,
-      sessionTime6
     } = this.state;
     return (
       !sessionTime1 &&
       !sessionTime2 &&
       !sessionTime3 &&
       !sessionTime4 &&
-      !sessionTime5 &&
-      !sessionTime6
+      !sessionTime5
     );
   };
 
@@ -224,7 +220,6 @@ class Signup extends Component {
       session_3,
       session_4,
       session_5,
-      session_6
     } = this.state;
     let sessions = {
       session_1,
@@ -232,7 +227,6 @@ class Signup extends Component {
       session_3,
       session_4,
       session_5,
-      session_6
     };
 
     let sessionTimes = [];
@@ -251,10 +245,10 @@ class Signup extends Component {
     return activeStep === 0
       ? !this.state.age || !this.state.firstName
       : activeStep === 1
-      ? this.isSessionSelected()
-      : activeStep === 2
-      ? this.areTimesSelected()
-      : false;
+        ? this.isSessionSelected()
+        : activeStep === 2
+          ? this.areTimesSelected()
+          : false;
   };
 
   areTimesSelected = () => {
@@ -320,8 +314,7 @@ class Signup extends Component {
       sessionTime2,
       sessionTime3,
       sessionTime4,
-      sessionTime5,
-      sessionTime6
+      sessionTime5
     } = this.state;
 
     let arr = [
@@ -329,8 +322,7 @@ class Signup extends Component {
       sessionTime2,
       sessionTime3,
       sessionTime4,
-      sessionTime5,
-      sessionTime6
+      sessionTime5
     ];
 
     return arr.map((session, index) => (session ? arr[index] : 0));
@@ -495,7 +487,6 @@ class Signup extends Component {
 
                                 <FormGroup>
                                   <FormControlLabel
-                                    disabled
                                     control={
                                       <Checkbox
                                         checked={session_1}
@@ -505,10 +496,9 @@ class Signup extends Component {
                                         value="session_1"
                                       />
                                     }
-                                    label="Session 1 - Full"
+                                    label="Session 1 - 4/14-4/30 - $90 (Includes heating fee)"
                                   />
                                   <FormControlLabel
-                                    disabled
                                     control={
                                       <Checkbox
                                         checked={session_2}
@@ -518,10 +508,9 @@ class Signup extends Component {
                                         value="session_2"
                                       />
                                     }
-                                    label="Session 2 - Full"
+                                    label="Session 2 - 5/5-5/21 - $90 (Includes heating fee)"
                                   />
                                   <FormControlLabel
-                                    disabled
                                     control={
                                       <Checkbox
                                         checked={session_3}
@@ -531,10 +520,9 @@ class Signup extends Component {
                                         value="session_3"
                                       />
                                     }
-                                    label="Session 3 - Full"
+                                    label="Session 3 - 6/2-6/18 - $85"
                                   />
                                   <FormControlLabel
-                                    disabled
                                     control={
                                       <Checkbox
                                         checked={session_4}
@@ -544,10 +532,9 @@ class Signup extends Component {
                                         value="session_4"
                                       />
                                     }
-                                    label="Session 4 - 6/4-6/27 - $115"
+                                    label="Session 4  - 6/23-7/9 - $85"
                                   />
                                   <FormControlLabel
-                                    disabled
                                     control={
                                       <Checkbox
                                         checked={session_5}
@@ -557,20 +544,7 @@ class Signup extends Component {
                                         value="session_5"
                                       />
                                     }
-                                    label="Session 5 - 7/9-7/25 - $80"
-                                  />
-                                  <FormControlLabel
-                                    disabled
-                                    control={
-                                      <Checkbox
-                                        checked={session_6}
-                                        onChange={this.handleChangeCheckbox(
-                                          'session_6'
-                                        )}
-                                        value="session_6"
-                                      />
-                                    }
-                                    label="Session 6 - TBD"
+                                    label="Session 5 - 8/10-8/27 - $85"
                                   />
                                 </FormGroup>
                               </Grid>
@@ -584,7 +558,7 @@ class Signup extends Component {
                             <div>
                               <div style={{ marginBottom: 32 }}>
                                 <Typography variant="subtitle1" gutterBottom>
-                                  Select Time
+                                  Select Time Preference
                                 </Typography>
                               </div>
                               <div
@@ -764,14 +738,14 @@ class Signup extends Component {
                               Back
                             </Button>
                           ) : (
-                            <Button
-                              disabled={activeStep === 0}
-                              onClick={this.handleBack}
-                              className={classes.backButton}
-                              size="large">
-                              Back
+                              <Button
+                                disabled={activeStep === 0}
+                                onClick={this.handleBack}
+                                className={classes.backButton}
+                                size="large">
+                                Back
                             </Button>
-                          )}
+                            )}
                           {activeStep === 3 ? (
                             <Button
                               variant="contained"
@@ -817,32 +791,32 @@ class Signup extends Component {
                               style={
                                 this.state.age.length
                                   ? {
-                                      background: classes.button,
-                                      color: 'white'
-                                    }
+                                    background: classes.button,
+                                    color: 'white'
+                                  }
                                   : {}
                               }
                               disabled={this.isNextDisabled(activeStep)}>
                               {this.stepActions()}
                             </Button>
                           ) : (
-                            <Button
-                              variant="contained"
-                              color="primary"
-                              onClick={this.handleNext}
-                              size="large"
-                              style={
-                                this.state.age.length
-                                  ? {
+                              <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={this.handleNext}
+                                size="large"
+                                style={
+                                  this.state.age.length
+                                    ? {
                                       background: classes.button,
                                       color: 'white'
                                     }
-                                  : {}
-                              }
-                              disabled={this.isNextDisabled(activeStep)}>
-                              {this.stepActions()}
-                            </Button>
-                          )}
+                                    : {}
+                                }
+                                disabled={this.isNextDisabled(activeStep)}>
+                                {this.stepActions()}
+                              </Button>
+                            )}
                         </div>
                       )}
                     </div>

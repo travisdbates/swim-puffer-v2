@@ -148,19 +148,16 @@ class SignupSwimTeam extends Component {
     session_3: false,
     session_4: false,
     session_5: false,
-    session_6: false,
     sessionTime1: false,
     sessionTime2: false,
     sessionTime3: false,
     sessionTime4: false,
     sessionTime5: false,
-    sessionTime6: false,
     sessionNotes1: '',
     sessionNotes2: '',
     sessionNotes3: '',
     sessionNotes4: '',
     sessionNotes5: '',
-    sessionNotes6: ''
   };
 
   componentDidMount() {
@@ -177,15 +174,13 @@ class SignupSwimTeam extends Component {
       session_3,
       session_4,
       session_5,
-      session_6
     } = this.state;
     return (
       !session_1 &&
       !session_2 &&
       !session_3 &&
       !session_4 &&
-      !session_5 &&
-      !session_6
+      !session_5
     );
   };
 
@@ -242,10 +237,10 @@ class SignupSwimTeam extends Component {
     return activeStep === 0
       ? !this.state.age || !this.state.firstName
       : activeStep === 1
-      ? this.isSessionSelected()
-      : activeStep === 2
-      ? this.areTimesSelected()
-      : false;
+        ? this.isSessionSelected()
+        : activeStep === 2
+          ? this.areTimesSelected()
+          : false;
   };
 
   areTimesSelected = () => {
@@ -312,7 +307,6 @@ class SignupSwimTeam extends Component {
       sessionTime3,
       sessionTime4,
       sessionTime5,
-      sessionTime6
     } = this.state;
 
     let arr = [
@@ -321,7 +315,6 @@ class SignupSwimTeam extends Component {
       sessionTime3,
       sessionTime4,
       sessionTime5,
-      sessionTime6
     ];
 
     return arr.map((session, index) => (session ? arr[index] : 0));
@@ -339,13 +332,11 @@ class SignupSwimTeam extends Component {
       session_3,
       session_4,
       session_5,
-      session_6,
       sessionNotes1,
       sessionNotes2,
       sessionNotes3,
       sessionNotes4,
       sessionNotes5,
-      sessionNotes6,
       firstName
     } = this.state;
 
@@ -494,7 +485,7 @@ class SignupSwimTeam extends Component {
                                         value="session_1"
                                       />
                                     }
-                                    label="Session 1 - 4/2-4/18 - $90"
+                                    label="Session 1 - 4/14-4/30 - $90"
                                   />
                                   <FormControlLabel
                                     control={
@@ -506,7 +497,7 @@ class SignupSwimTeam extends Component {
                                         value="session_2"
                                       />
                                     }
-                                    label="Session 2 - 4/22-5/2 - $85"
+                                    label="Session 2 - 5/5-5/21 - $90"
                                   />
                                   <FormControlLabel
                                     control={
@@ -518,7 +509,7 @@ class SignupSwimTeam extends Component {
                                         value="session_3"
                                       />
                                     }
-                                    label="Session 3 - 5/14-5/30 - $90"
+                                    label="Session 3 - 6/2-6/18 - $85"
                                   />
                                   <FormControlLabel
                                     control={
@@ -530,7 +521,7 @@ class SignupSwimTeam extends Component {
                                         value="session_4"
                                       />
                                     }
-                                    label="Session 4 - 6/4-6/27 - $115"
+                                    label="Session 4 - 6/23-7/9 - $85"
                                   />
                                   <FormControlLabel
                                     control={
@@ -542,20 +533,7 @@ class SignupSwimTeam extends Component {
                                         value="session_5"
                                       />
                                     }
-                                    label="Session 5 - 7/9-7/25 - $85"
-                                  />
-                                  <FormControlLabel
-                                    disabled
-                                    control={
-                                      <Checkbox
-                                        checked={session_6}
-                                        onChange={this.handleChangeCheckbox(
-                                          'session_6'
-                                        )}
-                                        value="session_6"
-                                      />
-                                    }
-                                    label="Session 6 - TBD"
+                                    label="Session 5 - 8/10-8/27 - $85"
                                   />
                                 </FormGroup>
                               </Grid>
@@ -749,14 +727,14 @@ class SignupSwimTeam extends Component {
                               Back
                             </Button>
                           ) : (
-                            <Button
-                              disabled={activeStep === 0}
-                              onClick={this.handleBack}
-                              className={classes.backButton}
-                              size="large">
-                              Back
+                              <Button
+                                disabled={activeStep === 0}
+                                onClick={this.handleBack}
+                                className={classes.backButton}
+                                size="large">
+                                Back
                             </Button>
-                          )}
+                            )}
                           {activeStep === 3 ? (
                             <Button
                               variant="contained"
@@ -773,7 +751,6 @@ class SignupSwimTeam extends Component {
                                         session_3,
                                         session_4,
                                         session_5,
-                                        session_6
                                       ],
                                       timePreference: this.selectedSessionTimes(),
                                       notes: [
@@ -782,7 +759,6 @@ class SignupSwimTeam extends Component {
                                         sessionNotes3,
                                         sessionNotes4,
                                         sessionNotes5,
-                                        sessionNotes6
                                       ]
                                     }
                                   });
@@ -801,32 +777,32 @@ class SignupSwimTeam extends Component {
                               style={
                                 this.state.age.length
                                   ? {
-                                      background: classes.button,
-                                      color: 'white'
-                                    }
+                                    background: classes.button,
+                                    color: 'white'
+                                  }
                                   : {}
                               }
                               disabled={this.isNextDisabled(activeStep)}>
                               {this.stepActions()}
                             </Button>
                           ) : (
-                            <Button
-                              variant="contained"
-                              color="primary"
-                              onClick={this.handleNext}
-                              size="large"
-                              style={
-                                this.state.age.length
-                                  ? {
+                              <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={this.handleNext}
+                                size="large"
+                                style={
+                                  this.state.age.length
+                                    ? {
                                       background: classes.button,
                                       color: 'white'
                                     }
-                                  : {}
-                              }
-                              disabled={this.isNextDisabled(activeStep)}>
-                              {this.stepActions()}
-                            </Button>
-                          )}
+                                    : {}
+                                }
+                                disabled={this.isNextDisabled(activeStep)}>
+                                {this.stepActions()}
+                              </Button>
+                            )}
                         </div>
                       )}
                     </div>
