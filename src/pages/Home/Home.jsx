@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { Parallax } from 'react-parallax';
+import { Parallax } from "react-parallax";
 
-import Nav from '../nav/Nav';
-import Topbar from '../../components/Topbar';
-import './Home.css';
-import 'animate.css/animate.min.css';
+import Nav from "../nav/Nav";
+import Topbar from "../../components/Topbar";
+import "./Home.css";
+import "animate.css/animate.min.css";
 
-import c from '../../assets/celeste.jpeg';
-import t from '../../assets/tarryn.jpeg';
-import w from '../../assets/whitney.jpeg';
+import c from "../../assets/celeste.jpeg";
+import t from "../../assets/tarryn.jpeg";
+import w from "../../assets/whitney.jpeg";
 
 export default class Home extends Component {
   componentDidMount() {
@@ -19,34 +19,34 @@ export default class Home extends Component {
   render() {
     const instructorList = [
       {
-        name: 'Celeste',
+        name: "Celeste",
         img: c,
         para1:
           'I enjoy working with children of all ages, but my passion is the "little ones.' +
           '"  My motto is: Love what you do, Do what you love!',
         para2:
-          'I have a degree in child development and raised 5 wonderful children. I am now e' +
-          'njoying watching my 10 grandchildren grow up and learn to swim!'
+          "I have a degree in child development and raised 5 wonderful children. I am now e" +
+          "njoying watching my 10 grandchildren grow up and learn to swim!"
       },
       {
-        name: 'Tarryn',
+        name: "Tarryn",
         img: t,
         para1:
-          'I love swimming! I enjoy any & every sport involving the water and was a competi' +
-          'tive synchronized swimmer for many years.',
+          "I love swimming! I enjoy any & every sport involving the water and was a competi" +
+          "tive synchronized swimmer for many years.",
         para2:
-          'I also find joy in working with children. I graduated in elementary education & ' +
-          'have 4 children of my own.'
+          "I also find joy in working with children. I graduated in elementary education & " +
+          "have 4 children of my own."
       },
       {
-        name: 'Whitney',
+        name: "Whitney",
         img: w,
         para1:
           "I'm excited about another season of swimming lessons. It's so rewarding to see c" +
-          'hildren learn and become more confident in the water.',
+          "hildren learn and become more confident in the water.",
         para2:
-          'I now have the pleasure of watching my oldest two children (of 3) compete on the' +
-          ' swim team.'
+          "I now have the pleasure of watching my oldest two children (of 3) compete on the" +
+          " swim team."
       }
     ];
 
@@ -59,52 +59,45 @@ export default class Home extends Component {
 
     const sessions = [
       {
-        name: 'Session 1',
-        dates: 'April 2 - April 18',
-        length: '9 Lessons',
-        days: 'T | W | Th',
-        cost: '$90'
+        name: "Session 1",
+        dates: "April 14 - April 30",
+        length: "9 Lessons",
+        days: "T | W | Th",
+        cost: "$90"
       },
       {
-        name: 'Session 2',
-        dates: 'April 22 - May 2',
-        length: '8 Lessons',
-        days: 'M | T | W | Th',
-        cost: '$85'
+        name: "Session 2",
+        dates: "May 5 - May 21",
+        length: "9 Lessons",
+        days: "T | W | Th",
+        cost: "$90"
       },
       {
-        name: 'Session 3',
-        dates: 'May 14 - May 30',
-        length: '9 Lessons',
-        days: 'T | W | Th',
-        cost: '$90'
+        name: "Session 3",
+        dates: "June 2 - June 18",
+        length: "9 Lessons",
+        days: "T | W | Th",
+        cost: "$85"
       },
       {
-        name: 'Session 4',
-        dates: 'June 4 - June 27',
-        length: '12 Lessons',
-        days: 'T | W | Th',
-        cost: '$115'
+        name: "Session 4",
+        dates: "June 23 - July 9",
+        length: "9 Lessons",
+        days: "T | W | Th",
+        cost: "$85"
       },
       {
-        name: 'Session 5',
-        dates: 'July 9 - July 25',
-        length: '9 Lessons',
-        days: 'T | W | Th',
-        cost: '$80'
-      },
-      {
-        name: 'Session 6',
-        dates: 'August - Pending',
-        length: 'Pending',
-        days: 'Pending',
-        cost: 'Pending'
+        name: "Session 5",
+        dates: "August 10 - August 27",
+        length: "9 Lessons",
+        days: "T | W | Th",
+        cost: "$85"
       }
     ];
 
     const image =
-      'https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?auto=format&fit=cro' +
-      'p&w=1950&q=80';
+      "https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?auto=format&fit=cro" +
+      "p&w=1950&q=80";
 
     const currentPath = this.props.location.pathname;
     return (
@@ -116,12 +109,14 @@ export default class Home extends Component {
           blur={{
             min: -5,
             max: 5
-          }}>
+          }}
+        >
           <div
             style={{
-              height: '90vh',
-              backgroundColor: 'rgba(0, 0, 0, 0.35)'
-            }}>
+              height: "90vh",
+              backgroundColor: "rgba(0, 0, 0, 0.35)"
+            }}
+          >
             <div className="sideBySide">
               <div className="divWelDiv">
                 <div className="divider" />
@@ -173,25 +168,26 @@ export default class Home extends Component {
         <div className="schedule">
           <div
             style={{
-              width: '85%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'space-around',
-              flexDirection: 'column',
-              color: 'white',
-              fontSize: '3.5vw',
-              fontWeight: '400',
-              height: 'auto',
-              padding: '50px 0px'
-            }}>
+              width: "85%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "space-around",
+              flexDirection: "column",
+              color: "white",
+              fontSize: "3.5vw",
+              fontWeight: "400",
+              height: "auto",
+              padding: "50px 0px"
+            }}
+          >
             <span>&#9679; Each class is 1/2 hour long.</span>
-            <span style={{ marginTop: '20px' }}>
+            <span style={{ marginTop: "20px" }}>
               &#9679; There are 4 children per class.
             </span>
-            <span style={{ marginTop: '20px' }}>
+            <span style={{ marginTop: "20px" }}>
               &#9679; Classes are arranged by age.
             </span>
-            <span style={{ marginTop: '20px' }}>
+            <span style={{ marginTop: "20px" }}>
               &#9679; Classes run from 9:00 AM to 5:30 PM.
             </span>
           </div>
@@ -228,8 +224,8 @@ export default class Home extends Component {
                 <div className="verticalDividerS" />
                 <div className="dates">
                   <span className="sessDesc" />
-                  <span style={{ fontSize: '.65em', color: 'grey' }}>
-                    {index <= 2 && 'Includes $5 heating fee'}
+                  <span style={{ fontSize: ".65em", color: "grey" }}>
+                    {index <= 1 && "Includes $5 heating fee"}
                   </span>
                 </div>
               </div>
@@ -237,10 +233,11 @@ export default class Home extends Component {
           })}
           <div
             style={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center'
-            }}>
+              width: "100%",
+              display: "flex",
+              justifyContent: "center"
+            }}
+          >
             {/* <a href={process.env.REACT_APP_LOGIN} className="signupButtonMid">
               Click here to register for sessions
             </a> */}
@@ -252,18 +249,19 @@ export default class Home extends Component {
         </div>
         <div
           style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: '#55B3B0',
-            padding: '50px'
-          }}>
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#55B3B0",
+            padding: "50px"
+          }}
+        >
           <iframe
             frameBorder="0"
             style={{
               border: 0,
-              width: '75vw',
-              height: '450px'
+              width: "75vw",
+              height: "450px"
             }}
             title="map"
             src="https://www.google.com/maps/embed/v1/place?q=pufferfish%20swim%20school&key=AIzaSyDAXE4JvR2q6QUimiMWFwouwgI5wSxH13A"
@@ -274,8 +272,8 @@ export default class Home extends Component {
           <div className="diagbottom" />
           <div className="diagbottomb" />
         </div>
-        &#9400; 2019 Puffer Fish Swim Lessons | Website & Design by{' '}
-        <a style={{ color: '#55B3B0', textDecoration: 'underline' }} href="/">
+        &#9400; 2019 Puffer Fish Swim Lessons | Website & Design by{" "}
+        <a style={{ color: "#55B3B0", textDecoration: "underline" }} href="/">
           TB Design
         </a>
       </div>
