@@ -521,7 +521,7 @@ class SignupSwimTeam extends Component {
                                         value="session_4"
                                       />
                                     }
-                                    label="Session 4 - 6/23-7/9 - $85"
+                                    label="Session 4 - 7/7-7/23 - $85"
                                   />
                                   <FormControlLabel
                                     control={

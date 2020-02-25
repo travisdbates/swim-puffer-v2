@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import logo from '../../assets/PufferSwimLogo1.svg';
-import { NavLink } from 'react-router-dom';
-import './Nav.css';
-import { slide as Menu } from 'react-burger-menu';
-import Auth from '../../utils/auth';
+import React, { Component } from "react";
+import logo from "../../assets/PufferSwimLogo1.svg";
+import { NavLink } from "react-router-dom";
+import "./Nav.css";
+import { slide as Menu } from "react-burger-menu";
+import Auth from "../../utils/auth";
 
 const auth = new Auth();
 
@@ -13,37 +13,41 @@ export default class Nav extends Component {
     this.state = {
       userData: null
     };
+    console.log(this.state.userData);
   }
 
   adminButton = () => {
     if (this.state.userData !== null) {
       if (
-        this.state.userData.email === 'travbates93@gmail.com' ||
-        this.state.userData.email === 'mikel.north@gmail.com'
+        this.state.userData.email === "travbates93@gmail.com" ||
+        this.state.userData.email === "mikel.north@gmail.com"
       ) {
         return (
           <NavLink
             className="loginBtn"
             to="/admin"
-            activeClassName="loginBtnAct">
+            activeClassName="loginBtnAct"
+          >
             Admin
           </NavLink>
         );
-      } else if (this.state.userData.email === 'celestewardrop@gmail.com') {
+      } else if (this.state.userData.email === "celestewardrop@gmail.com") {
         return (
           <NavLink
             className="loginBtn"
             to="/admin"
-            activeClassName="loginBtnAct">
+            activeClassName="loginBtnAct"
+          >
             Admin
           </NavLink>
         );
-      } else if (this.state.userData.email === 'mccormickrt@gmail.com') {
+      } else if (this.state.userData.email === "mccormickrt@gmail.com") {
         return (
           <NavLink
             className="loginBtn"
             to="/admin"
-            activeClassName="loginBtnAct">
+            activeClassName="loginBtnAct"
+          >
             Admin
           </NavLink>
         );
@@ -52,6 +56,7 @@ export default class Nav extends Component {
   };
 
   render() {
+    console.log(this.state.userData);
     return (
       <header>
         <NavLink to="/">
@@ -62,7 +67,8 @@ export default class Nav extends Component {
             className="loginBtn"
             activeClassName="loginBtnAct"
             exact
-            to="/">
+            to="/"
+          >
             Home
           </NavLink>
 
@@ -70,33 +76,48 @@ export default class Nav extends Component {
             <NavLink
               to="/faq"
               className="loginBtn"
-              activeClassName="loginBtnAct">
+              activeClassName="loginBtnAct"
+            >
               FAQ
             </NavLink>
           </div>
-          {!localStorage.getItem('isLoggedIn') ? null : (
+
+          <div>
+            <NavLink
+              to="/faq"
+              className="loginBtn"
+              activeClassName="loginBtnAct"
+            >
+              FAQ
+            </NavLink>
+          </div>
+
+          {!localStorage.getItem("isLoggedIn") ? null : (
             <div>
               <NavLink
                 to="/dash"
                 className="loginBtn"
-                activeClassName="loginBtnAct">
+                activeClassName="loginBtnAct"
+              >
                 Dashboard
               </NavLink>
             </div>
           )}
           <div>{this.adminButton()}</div>
-          {!localStorage.getItem('isLoggedIn') ? (
+          {!localStorage.getItem("isLoggedIn") ? (
             <span
               onClick={() => auth.login()}
               className="loginBtn"
-              activeClassName="loginBtnAct">
+              activeClassName="loginBtnAct"
+            >
               Login/Signup
             </span>
           ) : (
             <span
               onClick={() => auth.logout()}
               className="loginBtn"
-              activeClassName="loginBtnAct">
+              activeClassName="loginBtnAct"
+            >
               Logout
             </span>
           )}

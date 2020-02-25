@@ -81,7 +81,7 @@ export default class Home extends Component {
       },
       {
         name: "Session 4",
-        dates: "June 23 - July 9",
+        dates: "July 7 - July 23",
         length: "9 Lessons",
         days: "T | W | Th",
         cost: "$85"
