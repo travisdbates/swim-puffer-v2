@@ -225,7 +225,7 @@ export default class Home extends Component {
                 <div className="dates">
                   <span className="sessDesc" />
                   <span style={{ fontSize: ".65em", color: "grey" }}>
-                    {index <= 1 && "Includes $5 heating fee"}
+                    {index <= 1 && "Session full"}
                   </span>
                 </div>
               </div>
