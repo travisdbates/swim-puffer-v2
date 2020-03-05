@@ -19,6 +19,7 @@ import ReactTooltip from 'react-tooltip';
 import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
 import { withSnackbar } from 'notistack';
+import { grey } from '@material-ui/core/colors';
 
 const styles = theme => ({
   root: {
@@ -228,8 +229,8 @@ class AdminTable extends Component {
                                   {timeHelper(row.timePreference)}
                                 </p>
                               ) : (
-                                timeHelper(row.timePreference)
-                              )}
+                                  timeHelper(row.timePreference)
+                                )}
                               {/* {row.timePreference} */}
                             </TableCell>
                             <TableCell align="right">
@@ -346,9 +347,7 @@ class AdminTable extends Component {
                                 style={{
                                   color: row.emailSent
                                     ? '#54B3B0'
-                                    : row.email.search('@yahoo') === -1
-                                    ? 'grey'
-                                    : 'red',
+                                    : 'grey',
                                   cursor: 'pointer'
                                 }}
                                 onClick={async () => {
@@ -365,22 +364,22 @@ class AdminTable extends Component {
                                     );
                                     return;
                                   }
-                                  if (row.email.search('@yahoo') !== -1) {
-                                    console.log('GETTING HERE');
-                                    window.location.href =
-                                      'mailto:' +
-                                      row.email +
-                                      '?subject=' +
-                                      'Swim Lessons Time Assigned' +
-                                      '&body=' +
-                                      row.firstName +
-                                      ' - Session: ' +
-                                      row.sessionAssigned +
-                                      ' Time: ' +
-                                      timesForDash[row.timeAssigned];
+                                  // if (row.email.search('@yahoo') !== -1) {
+                                  //   console.log('GETTING HERE');
+                                  //   window.location.href =
+                                  //     'mailto:' +
+                                  //     row.email +
+                                  //     '?subject=' +
+                                  //     'Swim Lessons Time Assigned' +
+                                  //     '&body=' +
+                                  //     row.firstName +
+                                  //     ' - Session: ' +
+                                  //     row.sessionAssigned +
+                                  //     ' Time: ' +
+                                  //     timesForDash[row.timeAssigned];
 
-                                    return;
-                                  }
+                                  //   return;
+                                  // }
                                   if (row.emailSent) {
                                     this.props.enqueueSnackbar(
                                       'Are you sure you want to send an email again?',
@@ -390,27 +389,27 @@ class AdminTable extends Component {
                                         action: (
                                           <Button
                                             onClick={async () => {
-                                              if (
-                                                row.email.search('@yahoo') !==
-                                                -1
-                                              ) {
-                                                console.log('GETTING HERE');
-                                                window.location.href =
-                                                  'mailto:' +
-                                                  row.email +
-                                                  '?subject=' +
-                                                  'Swim Lessons Time Assigned' +
-                                                  '&body=' +
-                                                  row.firstName +
-                                                  ' - Session: ' +
-                                                  row.sessionAssigned +
-                                                  ' Time: ' +
-                                                  timesForDash[
-                                                    row.timeAssigned
-                                                  ];
+                                              // if (
+                                              //   row.email.search('@yahoo') !==
+                                              //   -1
+                                              // ) {
+                                              //   console.log('GETTING HERE');
+                                              //   window.location.href =
+                                              //     'mailto:' +
+                                              //     row.email +
+                                              //     '?subject=' +
+                                              //     'Swim Lessons Time Assigned' +
+                                              //     '&body=' +
+                                              //     row.firstName +
+                                              //     ' - Session: ' +
+                                              //     row.sessionAssigned +
+                                              //     ' Time: ' +
+                                              //     timesForDash[
+                                              //       row.timeAssigned
+                                              //     ];
 
-                                                return;
-                                              }
+                                              //   return;
+                                              // }
                                               try {
                                                 await updateStudent({
                                                   variables: {
