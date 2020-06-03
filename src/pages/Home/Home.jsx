@@ -225,7 +225,7 @@ export default class Home extends Component {
                 <div className="dates">
                   <span className="sessDesc" />
                   <span style={{ fontSize: ".65em", color: "grey" }}>
-                    {index <= 2 && "Session full"}
+                    {index <= 4 && "Session full"}
                   </span>
                 </div>
               </div>
