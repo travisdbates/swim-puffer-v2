@@ -497,7 +497,7 @@ class Signup extends Component {
                                         value="session_1"
                                       />
                                     }
-                                    label="Session 1 - 4/27-5/14 - $90 (Includes heating fee)"
+                                    label="Session 1 - 4/27-5/13 - $90 (Includes heating fee)"
                                   />
                                   <FormControlLabel
                                     control={

@@ -58,7 +58,7 @@ export default class Home extends Component {
     const sessions = [
       {
         name: "Session 1",
-        dates: "April 27 - May 14",
+        dates: "April 27 - May 13",
         length: "9 Lessons",
         days: "T | W | Th",
         cost: "$90"
@@ -80,7 +80,7 @@ export default class Home extends Component {
       {
         name: "Session 4",
         dates: "June 29 - July 9",
-        length: "9 Lessons",
+        length: "8 Lessons",
         days: "T | W | Th | F",
         cost: "$75"
       },
