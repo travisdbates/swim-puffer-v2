@@ -9,7 +9,7 @@ import "animate.css/animate.min.css";
 
 import c from "../../assets/celeste.jpeg";
 import t from "../../assets/tarryn.jpeg";
-import w from "../../assets/whitney.jpeg";
+import k from "../../assets/Kiley.jpeg";
 
 export default class Home extends Component {
   componentDidMount() {
@@ -39,14 +39,12 @@ export default class Home extends Component {
           "have 4 children of my own."
       },
       {
-        name: "Whitney",
-        img: w,
+        name: "Kiley",
+        img: k,
         para1:
-          "I'm excited about another season of swimming lessons. It's so rewarding to see c" +
-          "hildren learn and become more confident in the water.",
+          "I grew up in the same spot as your kids, taking lessons from Celeste! Since then I have swam for about 14 years on swim team and in high school, taught many lessons, and coached swim team!",
         para2:
-          "I now have the pleasure of watching my oldest two children (of 3) compete on the" +
-          " swim team."
+          "I love helping kids be able to learn new techniques and be able to swim on their own!"
       }
     ];
 
@@ -60,38 +58,38 @@ export default class Home extends Component {
     const sessions = [
       {
         name: "Session 1",
-        dates: "April 14 - April 30",
+        dates: "April 27 - May 14",
         length: "9 Lessons",
         days: "T | W | Th",
         cost: "$90"
       },
       {
         name: "Session 2",
-        dates: "May 5 - May 21",
+        dates: "May 18 - June 3",
         length: "9 Lessons",
         days: "T | W | Th",
         cost: "$90"
       },
       {
         name: "Session 3",
-        dates: "June 2 - June 18",
+        dates: "June 8 - June 24",
         length: "9 Lessons",
         days: "T | W | Th",
         cost: "$85"
       },
       {
         name: "Session 4",
-        dates: "July 7 - July 23",
+        dates: "June 29 - July 9",
         length: "9 Lessons",
-        days: "T | W | Th",
-        cost: "$85"
+        days: "T | W | Th | F",
+        cost: "$75"
       },
       {
         name: "Session 5",
-        dates: "August 10 - August 27",
-        length: "9 Lessons",
-        days: "T | W | Th",
-        cost: "$85"
+        dates: "August 17 - 27",
+        length: "8 Lessons",
+        days: "T | W | T | HF",
+        cost: "$75"
       }
     ];
 
@@ -224,9 +222,9 @@ export default class Home extends Component {
                 <div className="verticalDividerS" />
                 <div className="dates">
                   <span className="sessDesc" />
-                  <span style={{ fontSize: ".65em", color: "grey" }}>
+                  {/* <span style={{ fontSize: ".65em", color: "grey" }}>
                     {index <= 4 && "Session full"}
-                  </span>
+                  </span> */}
                 </div>
               </div>
             );
@@ -272,7 +270,7 @@ export default class Home extends Component {
           <div className="diagbottom" />
           <div className="diagbottomb" />
         </div>
-        &#9400; 2019 Puffer Fish Swim Lessons | Website & Design by{" "}
+        &#9400; {new Date().getFullYear()} Puffer Fish Swim Lessons | Website & Design by{" "}
         <a style={{ color: "#55B3B0", textDecoration: "underline" }} href="/">
           TB Design
         </a>
