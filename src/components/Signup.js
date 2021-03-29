@@ -515,7 +515,7 @@ class Signup extends Component {
                                   <FormControlLabel
                                     control={
                                       <Checkbox
-                                        disabled={false}
+                                        disabled
                                         checked={session_3}
                                         onChange={this.handleChangeCheckbox(
                                           'session_3'
@@ -749,7 +749,7 @@ class Signup extends Component {
                                 className={classes.backButton}
                                 size="large">
                                 Back
-                            </Button>
+                              </Button>
                             )}
                           {activeStep === 3 ? (
                             <Button
