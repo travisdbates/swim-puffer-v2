@@ -222,9 +222,9 @@ export default class Home extends Component {
                 <div className="verticalDividerS" />
                 <div className="dates">
                   <span className="sessDesc" />
-                  {/* <span style={{ fontSize: ".65em", color: "grey" }}>
-                    {index <= 4 && "Session full"}
-                  </span> */}
+                  <span style={{ fontSize: ".65em", color: "grey" }}>
+                    {index <= 3 && "Session full"}
+                  </span>
                 </div>
               </div>
             );
